@@ -124,6 +124,24 @@ body {
     margin-bottom: 1.25rem;
 }
 
+/* Button for projects link */
+.btn-projects {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #b8860b; /* golden brown */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-projects:hover {
+    background-color: #a07508; /* slightly darker */
+    transform: translateY(-2px);
+}
+
 /* Skills Section */
 .skills-section {
     width: 100%;                /* full width */
