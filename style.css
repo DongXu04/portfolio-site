@@ -1,10 +1,11 @@
-/* Reset some default chaos */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body */
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
@@ -12,12 +13,62 @@ body {
     color: #222;
 }
 
-/* Hero */
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: transparent; /* transparent background */
+}
+
+.nav-icons {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    background: transparent; /* semi-transparent golden brown */
+    color: black;
+    padding: 10px;
+    border-radius: 12px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: width 0.3s ease, padding 0.3s ease, background 0.3s ease;
+    width: 40px; /* icon-only width */
+}
+
+.nav-item img {
+    width: 32px;
+    height: 32px;
+}
+
+.nav-label {
+    white-space: nowrap;
+    margin-left: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-item:hover {
+    width: 120px;
+    padding-right: 15px;
+    background: rgba(225, 221, 211, 0.788); /* full opacity on hover */
+}
+
+.nav-item:hover .nav-label {
+    opacity: 1;
+}
+
+/* Hero Section */
 .hero {
-    background: #111827;
-    color: white;
     text-align: center;
-    padding: 80px 20px;
+    padding: 50px 20px 30px 20px;
+    background: #b8860b; /* golden brown */
+    color: white;
 }
 
 .hero h1 {
@@ -25,37 +76,191 @@ body {
     margin-bottom: 10px;
 }
 
-/* Sections */
-section {
+.hero h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+}
+
+/* About Section */
+.about-container {
+    display: flex;
+    flex-direction: row;  /* side by side */
+    gap: 40px;
+    align-items: center;
     max-width: 900px;
-    margin: 60px auto;
+    margin: 20px auto;
     padding: 0 20px;
+    flex-wrap: wrap; /* allows stacking on small screens */
 }
 
-h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
+.about-section {
+    background: #d5c381; /* light beige / golden tint */
+    padding: 60px 20px;
 }
 
-/* Project cards */
-.project-card {
-    background: white;
-    padding: 20px;
+.about-image img {
+    width: 300px;
+    border-radius: 12px;
+    display: block;
+}
+
+.about-text {
+    flex: 1; /* take remaining space next to image */
+    min-width: 250px;
+}
+
+.about-text h2 {
     margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.about-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+/* Skills Section */
+.skills-section {
+    width: 100%;                /* full width */
+    background: #c2a772;        /* soft golden color */
+    padding: 100px 0;           /* vertical padding */
+    display: flow-root;         /* ⭐ prevents margin collapse */
+}
+
+.skills-section h2 {
+    max-width: 900px;       /* match grid width */
+    margin: 0 auto 20px;    /* keep container centered */
+    text-align: left;       /* ⭐ move title to left */
+    font-size: 2.5rem;
+    padding: 0 20px;        /* ⭐ align with card edges nicely */
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px;
+    max-width: 900px;        /* keeps content centered */
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: #a3b18a;  /* clay green */
+    padding: 10px;
+    text-align: center;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: transform 0.2s ease;
+    color: white; /* better contrast */
+    font-size: 1.25rem;
 }
 
-.project-card:hover {
+/* Detail initially hidden */
+.skill-detail {
+    display: block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+/* Hover: reveal detail */
+.skill-card:hover .skill-detail {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional: lift card slightly on hover */
+.skill-card:hover {
     transform: translateY(-4px);
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 30px;
+/* Minimal Footer */
+.minimal-footer {
+    background: #111827;
+    color: #e5e7eb;
+    padding: 20px 40px;
+    font-size: 0.95rem;
+}
+
+/* main row */
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* ← THIS spreads things out */
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* left group */
+.footer-link {
+    color: inherit;
+    text-decoration: none;
+    padding: 4px 8px;
+    transition: color 0.25s ease;
+}
+
+.footer-link:hover {
+    color: #b8860b;
+}
+
+.divider {
+    opacity: 0.5;
+}
+
+/* copyright pushed right */
+.copyright {
+    margin-left: auto;
+    opacity: 0.8;
+}
+
+.phone-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.copy-msg {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
     background: #111827;
     color: white;
-    margin-top: 60px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    transform: translateY(10px);
+}
+
+.copy-msg.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth scroll for navbar links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-image img {
+        width: 80%;
+        margin: auto;
+    }
 }

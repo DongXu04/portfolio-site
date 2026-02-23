@@ -3,41 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Portfolio</title>
+    <title>Dx | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <header class="hero">
-        <h1>Your Name</h1>
-        <p>Engineering | Robotics | Mechatronics</p>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="nav-icons">
+            <li>
+                <a href="index.html" class="nav-item">
+                    <img src="icons/about.png" alt="About">
+                    <span class="nav-label">About</span>
+                </a>
+            </li>
+            <li>
+                <a href="projects.html" class="nav-item">
+                    <img src="icons/projects.png" alt="Projects">
+                    <span class="nav-label">Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="resume.html" class="nav-item">
+                    <img src="icons/resume.png" alt="Resume">
+                    <span class="nav-label">Resume</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-    <section class="about">
-        <h2>About Me</h2>
-        <p>
-            I am an engineering student passionate about robotics, automation,
-            and building practical systems that actually work in the real world.
-        </p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Tan Dong Xu</h1>
+        <h3>Robotics | Mechatronics</h3>
+        <p>Diploma in Robotics and Mechatronics Y3</p>
     </section>
 
-    <section class="projects">
-        <h2>Projects</h2>
-
-        <div class="project-card">
-            <h3>AMR Development</h3>
-            <p>Designed and built an autonomous mobile robot from scratch.</p>
+    <!-- About Me Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="assets/profile.jpg" alt="Dx Portrait">
+            </div>
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>
+                    My love for robotics began in childhood. The moment my primary school opened CCA registrations, I sprinted to sign up for the Robotics Club. There, I spent hours tinkering with LEGO robotics sets, discovering the magic of translating code into movement.
+                </p>
+                <p>
+                    Today, I channel that curiosity as a third-year Engineering student in the Diploma of Robotics and Mechatronics. My toolkit has expanded to Python and Autodesk Inventor. When I'm not elbow deep in my projects, you will find me reading fantasy novels!
+                </p>
+                <p>
+                    Checkout my recent projects!
+                </p>
+            </div>
         </div>
-
-        <div class="project-card">
-            <h3>ROS2 Racecar</h3>
-            <p>Implemented reactive navigation for high-speed track driving.</p>
-        </div>
-
     </section>
 
-    <footer>
-        <p>© 2026 Your Name</p>
+   <section id="skills" class="skills-section">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <span class="skill-name">ROS 2</span>
+                <span class="skill-detail">Robot Operating System 2</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Programming</span>
+                <span class="skill-detail">Python, C, HTML, Node-RED</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">CAD</span>
+                <span class="skill-detail">Autodesk Inventor, Solidworks</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">IoT Systems</span>
+                <span class="skill-detail">InfluxDB, MySQL, Grafana</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Embedded Systems</span>
+                <span class="skill-detail">Arduino, ESP32, Raspberry Pi</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Electronics</span>
+                <span class="skill-detail">Wiring, Soldering, Crimping</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Electrical Principles</span>
+                <span class="skill-detail">Ohm’s Law, Power Calculations</span>
+            </div>
+            <div class="skill-card">
+                <span class="skill-name">Automation</span>
+                <span class="skill-detail">AGV, AMR</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="minimal-footer">
+        <div class="footer-content">
+
+            <button id="copyPhone" class="footer-83707662-btn">
+                Phone
+            </button>
+            <span class="divider">|</span>
+
+            <a href="mailto:dongxu1104@gmail.com" class="footer-link">Email</a>
+            <span class="divider">|</span>
+
+            <a href="https://www.linkedin.com/in/dongxu-tan-876903261/"
+            target="_blank"
+            class="footer-link">
+            LinkedIn
+            </a>
+
+            <span class="copyright">© 2026 Tan Dong Xu</span>
+        </div>
+
+        <!-- copy feedback -->
+        <span id="copyMsg" class="copy-msg">Copied!</span>
     </footer>
 
 </body>
