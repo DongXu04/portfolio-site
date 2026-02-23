@@ -91,8 +91,9 @@ body {
     flex-direction: row;  /* side by side */
     gap: 40px;
     align-items: center;
+    width: 90%;
     max-width: 900px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 0 20px;
     flex-wrap: wrap; /* allows stacking on small screens */
 }
@@ -103,7 +104,8 @@ body {
 }
 
 .about-image img {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     border-radius: 12px;
     display: block;
 }
@@ -280,5 +282,26 @@ html {
     .about-image img {
         width: 80%;
         margin: auto;
+    }
+    @media (max-width: 768px) {
+        .skills-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 columns instead of 4 */
+            gap: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .skills-grid {
+            grid-template-columns: 1fr; /* stack cards on very small screens */
+        }
+    }
+    @media (max-width: 480px) {
+        .nav-item {
+            width: 35px;
+            padding: 5px;
+        }
+        .nav-item:hover {
+            width: 100px;
+        }
     }
 }
