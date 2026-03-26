@@ -32,17 +32,183 @@
         </ul>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <h1>Projects</h1>
-        <p>Work in progress. The robots are still being trained.</p>
+    <!-- Conveyor Section -->
+    <section class="conveyor-section">
+        <div class="carbon-fiber-bg"></div>
+        
+        <div class="hud-status top-left-status">SYS_STATUS: ONLINE <span class="pulse-dot"></span></div>
+
+        <div class="conveyor-header">
+            <h1 class="hud-title">MY_PROJECTS</h1>
+        </div>
+
+        <!-- Scroll Controls -->
+        <div class="scroll-controls">
+            <button class="scroll-btn" onmousedown="startScroll(-1)" onmouseup="stopScroll(-1)" onmouseleave="stopScroll(-1)" ontouchstart="startScroll(-1)" ontouchend="stopScroll(-1)">[ &lt;&lt; PREV ]</button>
+            <button class="scroll-btn" onmousedown="startScroll(1)" onmouseup="stopScroll(1)" onmouseleave="stopScroll(1)" ontouchstart="startScroll(1)" ontouchend="stopScroll(1)">[ NEXT &gt;&gt; ]</button>
+        </div>
+
+        <div class="conveyor-container">
+            <!-- The Belt Track behind the cards -->
+            <div class="belt-track">
+                <div class="hazard-stripes top"></div>
+                <div class="hazard-stripes bottom"></div>
+            </div>
+
+            <!-- The Scrollable Carousel -->
+            <div class="carousel-track">
+                
+                <!-- Spacer to help centering -->
+                <div class="carousel-spacer"></div>
+                
+                <!-- Project Crate 1 -->
+                <div class="project-crate">
+                    <div class="crate-screws">
+                        <div class="screw top-left"></div>
+                        <div class="screw top-right"></div>
+                        <div class="screw bottom-left"></div>
+                        <div class="screw bottom-right"></div>
+                    </div>
+                    <div class="crate-content">
+                        <div class="project-screen">
+                            <div class="screen-glare"></div>
+                            <img src="assets/profile.JPG" alt="AGV System">
+                        </div>
+                        <div class="project-data">
+                            <h3>Automated Guided Vehicle</h3>
+                            <div class="tech-tags">
+                                <span>ROS2</span>
+                                <span>Python</span>
+                                <span>IoT</span>
+                            </div>
+                            <p>Designed an AGV from scratch to navigate the production floor, improving line efficiency.</p>
+                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Crate 2 -->
+                <div class="project-crate">
+                    <div class="crate-screws">
+                        <div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div>
+                    </div>
+                    <div class="crate-content">
+                        <div class="project-screen">
+                            <div class="screen-glare"></div>
+                            <img src="assets/profile.JPG" alt="IoT Dashboard">
+                        </div>
+                        <div class="project-data">
+                            <h3>IoT Production Dashboard</h3>
+                            <div class="tech-tags">
+                                <span>MySQL</span>
+                                <span>Grafana</span>
+                                <span>Sensors</span>
+                            </div>
+                            <p>Developed an IoT monitoring system to track live production efficiency metrics and workstation statuses.</p>
+                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Crate 3 -->
+                <div class="project-crate">
+                    <div class="crate-screws">
+                        <div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div>
+                    </div>
+                    <div class="crate-content">
+                        <div class="project-screen">
+                            <div class="screen-glare"></div>
+                            <img src="assets/profile.JPG" alt="RC System">
+                        </div>
+                        <div class="project-data">
+                            <h3>RC Car Control System</h3>
+                            <div class="tech-tags">
+                                <span>ROS</span>
+                                <span>Ubuntu</span>
+                                <span>C++</span>
+                            </div>
+                            <p>Implemented advanced control nodes for a robotic RC car using Ubuntu and ROS environments.</p>
+                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Crate 4 -->
+                <div class="project-crate">
+                    <div class="crate-screws"><div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div></div>
+                    <div class="crate-content">
+                        <div class="project-screen"><div class="screen-glare"></div><img src="assets/profile.JPG" alt="Data Placeholder"></div>
+                        <div class="project-data">
+                            <h3>Project Alpha</h3>
+                            <div class="tech-tags"><span>Sensors</span><span>C++</span></div>
+                            <p>Data pending. Schematics currently uploading to server.</p>
+                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Crate 5 -->
+                <div class="project-crate">
+                    <div class="crate-screws"><div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div></div>
+                    <div class="crate-content">
+                        <div class="project-screen"><div class="screen-glare"></div><img src="assets/profile.JPG" alt="Data Placeholder"></div>
+                        <div class="project-data">
+                            <h3>Project Beta</h3>
+                            <div class="tech-tags"><span>CAD</span><span>Python</span></div>
+                            <p>Data pending. Schematics currently uploading to server.</p>
+                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Crate 6 -->
+                <div class="project-crate">
+                    <div class="crate-screws"><div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div></div>
+                    <div class="crate-content">
+                        <div class="project-screen"><div class="screen-glare"></div><img src="assets/profile.JPG" alt="Data Placeholder"></div>
+                        <div class="project-data">
+                            <h3>Project Gamma</h3>
+                            <div class="tech-tags"><span>Hardware</span><span>Electronics</span></div>
+                            <p>Data pending. Schematics currently uploading to server.</p>
+                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Crate 7 -->
+                <div class="project-crate">
+                    <div class="crate-screws"><div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div></div>
+                    <div class="crate-content">
+                        <div class="project-screen"><div class="screen-glare"></div><img src="assets/profile.JPG" alt="Data Placeholder"></div>
+                        <div class="project-data">
+                            <h3>Project Delta</h3>
+                            <div class="tech-tags"><span>Firmware</span><span>Algorithms</span></div>
+                            <p>Data pending. Schematics currently uploading to server.</p>
+                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Spacer for scrolling -->
+                <div class="carousel-spacer"></div>
+            </div>
+        </div>
+        
+        <div class="conveyor-instructions">
+            <span>&lt;&lt; USE CONTROLS TO INSPECT CRATES &gt;&gt;</span>
+        </div>
     </section>
 
-    <!-- Placeholder Section -->
-    <section style="padding: 80px 20px; text-align: center;">
-        <h2>Projects Coming Soon</h2>
-        <p>This section will showcase my major and minor works.</p>
-    </section>
+    <!-- Modal Popup Template -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal()">[X] ABORT_VIEW</button>
+            <div class="modal-content">
+                <h2 id="modal-title" style="color:#facc15; font-family:monospace; margin-bottom:15px; border-bottom:1px solid #334155; padding-bottom:10px;">PROJECT_DETAILS</h2>
+                <p id="modal-body" style="color:#cbd5e1; line-height:1.6;">Detailed schematics and documentation will be displayed here.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="minimal-footer">
@@ -62,5 +228,67 @@
         </div>
     </footer>
 
+    <!-- Conveyor and Modal Logic -->
+    <script>
+        let scrollInterval;
+        let holdTimeout;
+        let isHolding = false;
+        let isMouseDown = false;
+
+        function startScroll(direction) {
+            isMouseDown = true;
+            isHolding = false;
+            
+            // Wait 200ms to see if it's a click or a long hold
+            holdTimeout = setTimeout(() => {
+                if (!isMouseDown) return;
+                isHolding = true;
+                const track = document.querySelector('.carousel-track');
+                track.style.scrollSnapType = 'none';
+
+                scrollInterval = setInterval(() => {
+                    track.scrollBy({ left: direction * 15, behavior: 'auto' });
+                }, 16);
+            }, 200);
+        }
+
+        function stopScroll(direction) {
+            if (!isMouseDown) return;
+            isMouseDown = false;
+            clearTimeout(holdTimeout);
+            
+            const track = document.querySelector('.carousel-track');
+            
+            if (isHolding) {
+                // Was holding: stop the continuous movement and re-enable snap
+                clearInterval(scrollInterval);
+                isHolding = false;
+                track.style.scrollSnapType = 'x mandatory';
+            } else {
+                // Quick click: snap exactly one crate over
+                track.scrollBy({ left: direction * 400, behavior: 'smooth' });
+            }
+        }
+
+        function openModal(titleText) {
+            document.getElementById('modal-title').innerText = titleText;
+            document.getElementById('project-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('project-modal').classList.remove('active');
+        }
+
+        // Attach modal to buttons
+        const deployBtns = document.querySelectorAll('.btn-deploy');
+        const projectTitles = document.querySelectorAll('.project-data h3');
+        
+        deployBtns.forEach((btn, index) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(projectTitles[index].innerText + " SCHEMATICS");
+            });
+        });
+    </script>
 </body>
 </html>
