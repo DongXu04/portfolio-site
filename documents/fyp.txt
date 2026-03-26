@@ -1,0 +1,38 @@
+       
+ 
+ 
+  
+ 
+ 
+Official (Closed) and Non -Sensitive  
+Date: 30 Jan 2026  
+To Whom It May Concern : 
+Recommendation for Tan Dong Xu  
+I am pleased to recommend Tan Dong Xu  for admission to your esteemed university. I had the 
+privilege of supervising him during his attachment at SUTD  through our Final Year Project (FYP) 
+programme, where he consistently impressed me with his professionalism, commitment, and 
+technical capability.  
+Dong Xu distinguish ed himself through his strong work ethic, discipline, and learning attitude. He 
+approach ed tasks with focus and responsibility, demonstrate d the ability to grasp new concepts 
+quickly and appl ied them effectively.  During his FYP, Dong Xu’s technical strengths became 
+particularly evident. He trained himself rapidly on ROS and ROS2  without prior 
+knowledge/experience on both platforms and Ubuntu and successfully implemented these systems 
+on an RC car platform. He completed all tasks assigned by SUTD to a high standard and went 
+beyond expectations by finishing control -related work ahead of schedule. His strong problem -
+solving skills and hands -on engineering ability contributed significantly to the progress of the 
+project.  
+Beyond technical competence, Dong Xu demonstrates professionalism, a positive attitude, and 
+strong teamwork and communication skills. During FYP, he interact ed well with peers  and his 
+SUTD supervisor —qualities that are essential in both academic and professional environments.  
+Given his solid technical foundation, proven ability to learn independently, and strong motivation 
+for continuous improvement, I am confident that Dong Xu will excel in his further studies. He has 
+my highest recommendation, and I believe he will be a valua ble addition to your university.  
+Please feel free to contact me should further information be required.  
+ 
+Yours Sincerely,  
+ 
+ 
+Thomas Wong  
+Senior Development Engineer  
+Intelligent Robot Group  
+ 
