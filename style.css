@@ -173,21 +173,25 @@ body {
 }
 
 .about-image {
-    flex: 0 0 auto;
-    text-align: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .about-image img {
     width: 100%;
-    max-width: 480px;
+    max-width: 350px;
     border-radius: 12px;
     display: block;
-    margin: 0 auto; /* Removed the negative left margin */
+    margin: 0 auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
 }
 
 .about-text {
-    flex: 1;
-    min-width: 250px;
+    flex: 1.5;
+    min-width: 280px;
 }
 
 .about-text h2 {
@@ -928,13 +932,17 @@ html {
 
     /* --- About Section --- */
     .about-container {
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
     }
 
+    .about-image {
+        margin-bottom: 30px;
+    }
+
     .about-image img {
-        width: 60%;
-        max-width: 250px;
+        width: 85%;
+        max-width: 280px;
         margin: 0 auto;
     }
 
