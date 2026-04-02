@@ -61,7 +61,7 @@
                 <!-- Spacer to help centering -->
                 <div class="carousel-spacer"></div>
                 
-                <!-- Project Crate 1 -->
+                <!-- Project Crate 1: AMR Update -->
                 <div class="project-crate">
                     <div class="crate-screws">
                         <div class="screw top-left"></div>
@@ -70,124 +70,165 @@
                         <div class="screw bottom-right"></div>
                     </div>
                     <div class="crate-content">
-                        <div class="project-screen">
+                        <div class="project-screen hover-swap">
                             <div class="screen-glare"></div>
-                            <img src="assets/profile.JPG" alt="AGV System">
+                            <video src="project_images/amr_operation.mp4" class="primary" autoplay muted loop playsinline></video>
+                            <video src="project_images/amr_manual.mp4" class="secondary" muted loop playsinline></video>
+                            <div class="hover-hint">HOVER_FOR_MANUAL_CTL</div>
                         </div>
                         <div class="project-data">
-                            <h3>Automated Guided Vehicle</h3>
+                            <h3>Autonomous Mobile Robot (AMR)</h3>
                             <div class="tech-tags">
-                                <span>ROS2</span>
+                                <span>ROS 2</span>
+                                <span>SLAM</span>
+                                <span>Nav2</span>
+                                <span>CAD</span>
+                            </div>
+                            <p>Designed and built an AMR from scratch featuring SLAM and Nav2 for dynamic obstacle avoidance and path planning.</p>
+                            <a href="#" class="btn-deploy" onclick="openModal('Autonomous Mobile Robot (AMR)', `During my internship, I designed and developed an Autonomous Mobile Robot (AMR) from the ground up, covering mechanical design, electrical integration, and software implementation. I engineered a compact dual-chassis structure to optimize space, stability, and manoeuvrability, while integrating industrial-grade motors, controllers, and sensors including LiDAR. The system was fully wired and powered through a centralized distribution setup, with communication handled via ROS 2. Initial development included manual control through a custom HTML-based joystick interface, allowing real-time testing and validation of the robot’s motion and hardware integration.\n\nBuilding on this foundation, I successfully implemented SLAM and Nav2 for autonomous navigation, enabling the robot to perform mapping, localization, and path planning within its environment. The AMR is now capable of navigating dynamically while avoiding obstacles, marking a transition from a basic AGV prototype to a fully autonomous system. Current development focuses on deploying the robot in a real production floor setting, improving reliability, and refining navigation performance for practical industrial use.`)">INITIATE_VIEW</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Crate 2: Autonomous Driving -->
+                <div class="project-crate">
+                    <div class="crate-screws">
+                        <div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div>
+                    </div>
+                    <div class="crate-content">
+                        <div class="project-screen hover-swap">
+                            <div class="screen-glare"></div>
+                            <video src="project_images/autonomous_hardware.mp4" class="primary" autoplay muted loop playsinline></video>
+                            <video src="project_images/autonomous_sim.mp4" class="secondary" muted loop playsinline></video>
+                            <div class="hover-hint">HOVER_FOR_SIM_LOGIC</div>
+                        </div>
+                        <div class="project-data">
+                            <h3>Autonomous driving project</h3>
+                            <div class="tech-tags">
+                                <span>ROS 2</span>
+                                <span>LiDAR</span>
                                 <span>Python</span>
+                            </div>
+                            <p>Programmed an RC car to drive autonomously around a racetrack using a LiDAR sensor and a gap following algorithm.</p>
+                            <a href="#" class="btn-deploy" onclick="openModal('Autonomous driving project', 'For my final year project, I did a joint project by NYP and SUTD. My objective was to program an RC car to drive autonomously around a racetrack. I will be using pure reactive methods to control the speed and steering. I tested was using a simulation, then on the RC car itself.\n\nThe final system utilizes a LiDAR sensor for environmental perception, and employs a gap following algorithm implemented using a ROS 2 framework. The algorithm continuously identifies for the safest gap in the surroundings and adjusts the steering accordingly.\n\nWhen tested, the RC car was able to navigate smoothly without crashing.')">INITIATE_VIEW</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Crate 3: Automatic Baccarat -->
+                <div class="project-crate">
+                    <div class="crate-screws">
+                        <div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div>
+                    </div>
+                    <div class="crate-content">
+                        <div class="project-screen hover-swap">
+                            <div class="screen-glare"></div>
+                            <img src="project_images/baccarat_hardware.jpg" class="primary" alt="Automatic Baccarat Hardware">
+                            <img src="project_images/baccarat_gui.png" class="secondary" alt="Automatic Baccarat GUI">
+                            <div class="hover-hint">HOVER_FOR_GUI</div>
+                        </div>
+                        <div class="project-data">
+                            <h3>Automatic baccarat game</h3>
+                            <div class="tech-tags">
+                                <span>Python</span>
+                                <span>Raspberry Pi</span>
                                 <span>IoT</span>
                             </div>
-                            <p>Designed an AGV from scratch to navigate the production floor, improving line efficiency.</p>
-                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Crate 2 -->
-                <div class="project-crate">
-                    <div class="crate-screws">
-                        <div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div>
-                    </div>
-                    <div class="crate-content">
-                        <div class="project-screen">
-                            <div class="screen-glare"></div>
-                            <img src="assets/profile.JPG" alt="IoT Dashboard">
-                        </div>
-                        <div class="project-data">
-                            <h3>IoT Production Dashboard</h3>
-                            <div class="tech-tags">
-                                <span>MySQL</span>
-                                <span>Grafana</span>
-                                <span>Sensors</span>
-                            </div>
-                            <p>Developed an IoT monitoring system to track live production efficiency metrics and workstation statuses.</p>
-                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                            <p>Automated Baccarat using Raspberry Pi and Python, linking hardware with a GUI and Adafruit IoT for real-time stats.</p>
+                            <a href="#" class="btn-deploy" onclick="openModal('Automatic baccarat game', 'In this project, I decided to automate the game Baccarat.\n\nUsing Python and Raspberry Pi, I linked up hardware and GUI, so users can play with the hardware while checking their stats online. Communication between my python program and the Raspberry PI was vital in ensuring synchronization and smooth gameplay. I used Adafruit IOT to store and send data, as well as providing a dashboard for the owner to view ongoing stats.\n\nOverall, users are able to play as long as they want, and their real time stats will update on both the Adafruit dashboard and the GUI when the user logs in.')">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Project Crate 3 -->
+                <!-- Project Crate 4: Gripper Fingers -->
                 <div class="project-crate">
-                    <div class="crate-screws">
-                        <div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div>
-                    </div>
+                    <div class="crate-screws"><div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div></div>
                     <div class="crate-content">
-                        <div class="project-screen">
+                        <div class="project-screen hover-swap">
                             <div class="screen-glare"></div>
-                            <img src="assets/profile.JPG" alt="RC System">
+                            <img src="project_images/gripper_cad.jpg" class="primary" alt="Gripper CAD">
+                            <img src="project_images/gripper_logic.jpg" class="secondary" alt="Gripper Technical Drawing">
+                            <div class="hover-hint">HOVER_FOR_SCHEMA</div>
                         </div>
                         <div class="project-data">
-                            <h3>RC Car Control System</h3>
+                            <h3>Gripper fingers for robot arm</h3>
                             <div class="tech-tags">
-                                <span>ROS</span>
-                                <span>Ubuntu</span>
-                                <span>C++</span>
+                                <span>Autodesk Inventor</span>
+                                <span>Design</span>
                             </div>
-                            <p>Implemented advanced control nodes for a robotic RC car using Ubuntu and ROS environments.</p>
-                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project Crate 4 -->
-                <div class="project-crate">
-                    <div class="crate-screws"><div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div></div>
-                    <div class="crate-content">
-                        <div class="project-screen"><div class="screen-glare"></div><img src="assets/profile.JPG" alt="Data Placeholder"></div>
-                        <div class="project-data">
-                            <h3>Project Alpha</h3>
-                            <div class="tech-tags"><span>Sensors</span><span>C++</span></div>
-                            <p>Data pending. Schematics currently uploading to server.</p>
-                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                            <p>Designed a work holder fixture and gripper fingers in Autodesk Inventor to secure and grip spherical steel balls.</p>
+                            <a href="#" class="btn-deploy" onclick="openModal('Gripper fingers for robot arm', 'Using Autodesk Inventor, I designed a work holder fixture to secure spherical steel balls, as well as gripper fingers to grip them.\n\nOver 6 weeks, I researched, designed, and selected suitable materials for this model. For this project, I was tasked with assessing the right size, material, and usability of the final designs. By the end of this project, I understood the in and outs of Inventor a lot better.')">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project Crate 5 -->
+                <!-- Project Crate 5: LabView Stopwatch -->
                 <div class="project-crate">
                     <div class="crate-screws"><div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div></div>
                     <div class="crate-content">
-                        <div class="project-screen"><div class="screen-glare"></div><img src="assets/profile.JPG" alt="Data Placeholder"></div>
+                        <div class="project-screen hover-swap">
+                            <div class="screen-glare"></div>
+                            <img src="project_images/stopwatch_ui.jpg" class="primary" alt="Stopwatch UI">
+                            <img src="project_images/stopwatch_logic.jpg" class="secondary" alt="Stopwatch Logic">
+                            <div class="hover-hint">HOVER_FOR_LOGIC</div>
+                        </div>
                         <div class="project-data">
-                            <h3>Project Beta</h3>
-                            <div class="tech-tags"><span>CAD</span><span>Python</span></div>
-                            <p>Data pending. Schematics currently uploading to server.</p>
-                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                            <h3>Stopwatch using LabView</h3>
+                            <div class="tech-tags">
+                                <span>LabView</span>
+                                <span>Logic</span>
+                            </div>
+                            <p>Created a stopwatch with start, stop, reset, and lap functions using NI Labview and complex array handling.</p>
+                            <a href="#" class="btn-deploy" onclick="openModal('Stopwatch using LabView', 'In this project, I created a stopwatch using National Instruments\' (NI) Labview.\n\nThis would have to include a start, stop, and reset button. I also added a lap function for users to track their timing. I was proud that I learnt and applied the use of arrays (such as the indexing, build, and delete).')">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project Crate 6 -->
+                <!-- Project Crate 6: Handheld Window Cleaner -->
                 <div class="project-crate">
                     <div class="crate-screws"><div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div></div>
                     <div class="crate-content">
-                        <div class="project-screen"><div class="screen-glare"></div><img src="assets/profile.JPG" alt="Data Placeholder"></div>
+                        <div class="project-screen hover-swap">
+                            <div class="screen-glare"></div>
+                            <img src="project_images/window_cleaner_hardware.jpg" class="primary" alt="Window Cleaner Hardware">
+                            <img src="project_images/window_cleaner_sim.jpg" class="secondary" alt="Window Cleaner Simulation">
+                            <div class="hover-hint">HOVER_FOR_SIM</div>
+                        </div>
                         <div class="project-data">
-                            <h3>Project Gamma</h3>
-                            <div class="tech-tags"><span>Hardware</span><span>Electronics</span></div>
-                            <p>Data pending. Schematics currently uploading to server.</p>
-                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                            <h3>Handheld window cleaner</h3>
+                            <div class="tech-tags">
+                                <span>Arduino</span>
+                                <span>Hardware</span>
+                            </div>
+                            <p>Developed an Arduino prototype for faster window cleaning, integrating motors, LEDs, and buzzer logic.</p>
+                            <a href="#" class="btn-deploy" onclick="openModal('Handheld window cleaner', 'I decided to make a prototype that can clean windows faster and easier.\n\nUsing Arduino, I assembled my motors, LEDs, buzzers and wires together and coded my program into the system. When the button is clicked, the motor and buzzer will run for 5s and the led will light up indicating the decide is running. Afterwards, when the motor stops, the led will blink before both buzzer and led shuts off.')">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project Crate 7 -->
+                <!-- Project Crate 7: Animal Sorter AI -->
                 <div class="project-crate">
                     <div class="crate-screws"><div class="screw top-left"></div><div class="screw top-right"></div><div class="screw bottom-left"></div><div class="screw bottom-right"></div></div>
                     <div class="crate-content">
-                        <div class="project-screen"><div class="screen-glare"></div><img src="assets/profile.JPG" alt="Data Placeholder"></div>
+                        <div class="project-screen hover-swap">
+                            <div class="screen-glare"></div>
+                            <img src="project_images/animal_sorter.jpg" class="primary" alt="Animal Sorter AI">
+                            <img src="project_images/animal_sorter_logic.jpg" class="secondary" alt="Animal Sorter Logic">
+                            <div class="hover-hint">HOVER_FOR_TRAINING</div>
+                        </div>
                         <div class="project-data">
-                            <h3>Project Delta</h3>
-                            <div class="tech-tags"><span>Firmware</span><span>Algorithms</span></div>
-                            <p>Data pending. Schematics currently uploading to server.</p>
-                            <a href="#" class="btn-deploy">INITIATE_VIEW</a>
+                            <h3>Animal Sorter AI</h3>
+                            <div class="tech-tags">
+                                <span>AI</span>
+                                <span>Orange</span>
+                                <span>ML</span>
+                            </div>
+                            <p>Trained a neural network model using Orange software to accurately categorize animal images, including blurry ones.</p>
+                            <a href="#" class="btn-deploy" onclick="openModal('Animal Sorter AI', 'I wanted to create an AI that could sort different animals into their respective categories.\n\nUsing the software Orange, I used neural network model to learn how to sort the different animals and managed to sort them based on the image on the left.\n\nThe AI managed to successfully label each image of the animal correctly, even when tested with blurry images.')">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
+
                 
                 <!-- Spacer for scrolling -->
                 <div class="carousel-spacer"></div>
@@ -205,7 +246,7 @@
             <button class="close-btn" onclick="closeModal()">[X] ABORT_VIEW</button>
             <div class="modal-content">
                 <h2 id="modal-title" style="color:#facc15; font-family:monospace; margin-bottom:15px; border-bottom:1px solid #334155; padding-bottom:10px;">PROJECT_DETAILS</h2>
-                <p id="modal-body" style="color:#cbd5e1; line-height:1.6;">Detailed schematics and documentation will be displayed here.</p>
+                <p id="modal-body" style="color:#cbd5e1; line-height:1.6; white-space: pre-line;">Detailed schematics and documentation will be displayed here.</p>
             </div>
         </div>
     </div>
@@ -232,22 +273,58 @@
     <script>
         let scrollInterval;
         let holdTimeout;
-        let isHolding = false;
         let isMouseDown = false;
+        let isAutoScrolling = true;
+        let animationFrameId;
+
+        const track = document.querySelector('.carousel-track');
+        
+        // Clone crates for seamless loop (optional if you have many, but 7 is fine to double)
+        const projectCrates = Array.from(track.querySelectorAll('.project-crate'));
+        projectCrates.forEach(crate => {
+            const clone = crate.cloneNode(true);
+            track.appendChild(clone);
+        });
+
+        // Remove spacers for a consistent stream
+        track.querySelectorAll('.carousel-spacer').forEach(s => s.remove());
+
+        function step() {
+            if (isAutoScrolling) {
+                track.scrollLeft += 0.8; // Adjust speed here (lower = slower)
+                
+                // Reset to start seamlessly when reaching mid-point
+                // Middle is half the scrollWidth (approx since we doubled it)
+                if (track.scrollLeft >= (track.scrollWidth / 2)) {
+                    track.scrollLeft = 0;
+                }
+            }
+            animationFrameId = requestAnimationFrame(step);
+        }
+
+        // Initialize auto scroll
+        requestAnimationFrame(step);
+
+        // Interaction Pausing
+        track.addEventListener('mouseenter', () => {
+            isAutoScrolling = false;
+        });
+
+        track.addEventListener('mouseleave', () => {
+            if (!isMouseDown) {
+                isAutoScrolling = true;
+            }
+        });
 
         function startScroll(direction) {
             isMouseDown = true;
-            isHolding = false;
+            isAutoScrolling = false;
             
-            // Wait 200ms to see if it's a click or a long hold
+            // Re-enable manual snap if needed, or just scroll
             holdTimeout = setTimeout(() => {
                 if (!isMouseDown) return;
-                isHolding = true;
-                const track = document.querySelector('.carousel-track');
-                track.style.scrollSnapType = 'none';
-
                 scrollInterval = setInterval(() => {
-                    track.scrollBy({ left: direction * 15, behavior: 'auto' });
+                    track.scrollLeft += direction * 10;
                 }, 16);
             }, 200);
         }
@@ -256,22 +333,24 @@
             if (!isMouseDown) return;
             isMouseDown = false;
             clearTimeout(holdTimeout);
+            clearInterval(scrollInterval);
             
-            const track = document.querySelector('.carousel-track');
-            
-            if (isHolding) {
-                // Was holding: stop the continuous movement and re-enable snap
-                clearInterval(scrollInterval);
-                isHolding = false;
-                track.style.scrollSnapType = 'x mandatory';
-            } else {
-                // Quick click: snap exactly one crate over
-                track.scrollBy({ left: direction * 400, behavior: 'smooth' });
+            // Snap logic removed for fully fluid conveyor. Use small push instead.
+            if (!isAutoScrolling) {
+                 track.scrollBy({ left: direction * 350, behavior: 'smooth' });
             }
+
+            // Resume auto scroll after a short delay
+            setTimeout(() => {
+                if (!isMouseDown) {
+                    isAutoScrolling = true;
+                }
+            }, 1000);
         }
 
-        function openModal(titleText) {
-            document.getElementById('modal-title').innerText = titleText;
+        function openModal(titleText, bodyText) {
+            document.getElementById('modal-title').innerText = titleText + " SCHEMATICS";
+            document.getElementById('modal-body').innerText = bodyText;
             document.getElementById('project-modal').classList.add('active');
         }
 
@@ -279,16 +358,18 @@
             document.getElementById('project-modal').classList.remove('active');
         }
 
-        // Attach modal to buttons
-        const deployBtns = document.querySelectorAll('.btn-deploy');
-        const projectTitles = document.querySelectorAll('.project-data h3');
-        
-        deployBtns.forEach((btn, index) => {
-            btn.addEventListener('click', (e) => {
+        // Attach modal to buttons for the first crate (since it's manual)
+        const firstCrateBtn = document.querySelector('.project-crate:first-of-type .btn-deploy');
+        const firstCrateTitle = document.querySelector('.project-crate:first-of-type h3');
+        const firstCratePara = document.querySelector('.project-crate:first-of-type p');
+
+        if(firstCrateBtn) {
+            firstCrateBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                openModal(projectTitles[index].innerText + " SCHEMATICS");
+                openModal(firstCrateTitle.innerText, firstCratePara.innerText);
             });
-        });
+        }
+
     </script>
 </body>
 </html>
