@@ -251,6 +251,22 @@
         </div>
     </div>
 
+    <!-- Media Modal Popup -->
+    <div id="media-modal" class="modal-overlay" onclick="closeMediaModal()">
+        <div class="modal-box" onclick="event.stopPropagation()" style="background: rgba(15, 23, 42, 0.95); display: flex; flex-direction: column; align-items: center; max-width: 90vw; padding: 20px; border-radius: 6px;">
+            <div style="width: 100%; display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center;">
+                <div id="media-controls" style="display: flex; gap: 10px;">
+                    <button id="btn-primary-media" class="btn-deploy" style="padding: 6px 12px; font-size: 0.85rem; cursor: pointer; border:none; box-shadow:none;" onclick="switchMedia('primary')">MAIN_VIEW</button>
+                    <button id="btn-secondary-media" class="btn-deploy" style="padding: 6px 12px; font-size: 0.85rem; cursor: pointer; border:none; box-shadow:none;" onclick="switchMedia('secondary')">ALT_VIEW</button>
+                </div>
+                <button class="close-btn" onclick="closeMediaModal()">[X] CLOSE</button>
+            </div>
+            <div id="media-content-container" style="width: 100%; max-height: 75vh; display: flex; justify-content: center; align-items: center;">
+                <!-- Media injected here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="minimal-footer">
         <div class="footer-content">
@@ -291,12 +307,10 @@
 
         function step() {
             if (isAutoScrolling) {
-                track.scrollLeft += 0.8; // Adjust speed here (lower = slower)
+                track.scrollLeft += 1; // 1px prevents subpixel jitter on phones
                 
-                // Reset to start seamlessly when reaching mid-point
-                // Middle is half the scrollWidth (approx since we doubled it)
                 if (track.scrollLeft >= (track.scrollWidth / 2)) {
-                    track.scrollLeft = 0;
+                    track.scrollLeft -= Math.floor(track.scrollWidth / 2);
                 }
             }
             animationFrameId = requestAnimationFrame(step);
@@ -356,6 +370,99 @@
 
         function closeModal() {
             document.getElementById('project-modal').classList.remove('active');
+        }
+
+        // Media Modal logic (supports cloned crates too via event delegation)
+        let currentModalPrimary = null;
+        let currentModalSecondary = null;
+
+        track.addEventListener('click', (e) => {
+            const screen = e.target.closest('.project-screen');
+            if (screen) {
+                openMediaModalFromScreen(screen);
+            }
+        });
+
+        function configureCloneForModal(element) {
+            if (!element) return null;
+            const clone = element.cloneNode(true);
+            clone.className = ''; 
+            clone.style.width = 'auto';
+            clone.style.height = 'auto';
+            clone.style.maxWidth = '100%';
+            clone.style.maxHeight = '70vh';
+            clone.style.objectFit = 'contain';
+            clone.style.borderRadius = '4px';
+            clone.style.display = 'none';
+
+            if (clone.tagName === 'VIDEO') {
+                clone.controls = true;
+                clone.muted = false; // Allow sound
+            }
+            return clone;
+        }
+
+        function openMediaModalFromScreen(screen) {
+            const container = document.getElementById('media-content-container');
+            container.innerHTML = '';
+            
+            const primary = screen.querySelector('.primary');
+            const secondary = screen.querySelector('.secondary');
+            
+            currentModalPrimary = configureCloneForModal(primary);
+            currentModalSecondary = configureCloneForModal(secondary);
+
+            if (currentModalPrimary) container.appendChild(currentModalPrimary);
+            if (currentModalSecondary) container.appendChild(currentModalSecondary);
+
+            document.getElementById('media-modal').classList.add('active');
+            isAutoScrolling = false;
+
+            const secBtn = document.getElementById('btn-secondary-media');
+            if (currentModalSecondary) {
+                secBtn.style.display = 'inline-block';
+            } else {
+                secBtn.style.display = 'none';
+            }
+            
+            switchMedia('primary');
+        }
+
+        function switchMedia(type) {
+            if (currentModalPrimary) {
+                currentModalPrimary.style.display = 'none';
+                if (currentModalPrimary.tagName === 'VIDEO') currentModalPrimary.pause();
+            }
+            if (currentModalSecondary) {
+                currentModalSecondary.style.display = 'none';
+                if (currentModalSecondary.tagName === 'VIDEO') currentModalSecondary.pause();
+            }
+
+            const priBtn = document.getElementById('btn-primary-media');
+            const secBtn = document.getElementById('btn-secondary-media');
+
+            priBtn.style.background = '#334155';
+            priBtn.style.color = '#facc15';
+            secBtn.style.background = '#334155';
+            secBtn.style.color = '#facc15';
+
+            if (type === 'primary' && currentModalPrimary) {
+                currentModalPrimary.style.display = 'block';
+                if (currentModalPrimary.tagName === 'VIDEO') currentModalPrimary.play().catch(e => e);
+                priBtn.style.background = '#facc15';
+                priBtn.style.color = '#000';
+            } else if (type === 'secondary' && currentModalSecondary) {
+                currentModalSecondary.style.display = 'block';
+                if (currentModalSecondary.tagName === 'VIDEO') currentModalSecondary.play().catch(e => e);
+                secBtn.style.background = '#facc15';
+                secBtn.style.color = '#000';
+            }
+        }
+
+        function closeMediaModal() {
+            document.getElementById('media-modal').classList.remove('active');
+            document.getElementById('media-content-container').innerHTML = ''; // automatically pauses/destroys videos
+            isAutoScrolling = true;
         }
 
         // Attach modal to buttons for the first crate (since it's manual)
