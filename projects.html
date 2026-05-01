@@ -363,7 +363,7 @@
 
         function updatePointerModeUI() {
             const isCoarsePointer = coarsePointerQuery.matches;
-            dragThresholdPx = isCoarsePointer ? 8 : 12;
+            dragThresholdPx = isCoarsePointer ? 4 : 10;
             if (conveyorInstructionText) {
                 conveyorInstructionText.textContent = isCoarsePointer
                     ? '<< SWIPE OR DRAG TO INSPECT CRATES >>'
@@ -486,10 +486,11 @@
         function moveTouchDrag(event) {
             if (!isDraggingTrack || !usingTouchFallback || !event.touches || event.touches.length !== 1) return;
             const deltaX = event.touches[0].clientX - pointerStartX;
-            if (Math.abs(deltaX) > dragThresholdPx) {
+            const absDeltaX = Math.abs(deltaX);
+            if (absDeltaX > dragThresholdPx) {
                 dragMoved = true;
-                event.preventDefault();
             }
+            event.preventDefault();
             track.scrollLeft = trackStartScrollLeft - deltaX;
             normalizeLoopScroll();
         }

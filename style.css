@@ -1310,7 +1310,7 @@ button:focus-visible,
     -ms-overflow-style: none;
     scrollbar-width: none;
     cursor: grab;
-    touch-action: pan-y;
+    touch-action: pan-x;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -1926,6 +1926,7 @@ html {
         gap: 16px;
         padding-inline: 14px;
         scroll-snap-type: x mandatory;
+        touch-action: none;
     }
 
     .carousel-spacer {
