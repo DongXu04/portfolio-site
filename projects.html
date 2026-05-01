@@ -296,6 +296,7 @@
         let pointerStartX = 0;
         let trackStartScrollLeft = 0;
         let dragMoved = false;
+        let usingTouchFallback = false;
         let resumeAutoScrollTimeout;
         let isPageVisible = !document.hidden;
         let videoUpdateQueued = false;
@@ -424,6 +425,7 @@
         }
 
         function startDrag(event) {
+            if (event.pointerType === 'touch') return;
             if (event.button !== undefined && event.button !== 0) return;
             if (event.target.closest('.btn-deploy, .close-btn')) return;
             isDraggingTrack = true;
@@ -454,6 +456,49 @@
             if (event.pointerId !== undefined && track.hasPointerCapture(event.pointerId)) {
                 track.releasePointerCapture(event.pointerId);
             }
+            if (!dragMoved) {
+                const pressedScreen = pointerDownTarget && pointerDownTarget.closest
+                    ? pointerDownTarget.closest('.project-screen')
+                    : null;
+                if (pressedScreen) {
+                    suppressNextTrackClick = true;
+                    openMediaModalFromScreen(pressedScreen);
+                }
+            }
+            pointerDownTarget = null;
+            scheduleAutoScrollResume();
+        }
+
+        function startTouchDrag(event) {
+            if (!event.touches || event.touches.length !== 1) return;
+            if (event.target.closest('.btn-deploy, .close-btn')) return;
+            usingTouchFallback = true;
+            isDraggingTrack = true;
+            dragMoved = false;
+            pointerDownTarget = event.target;
+            isAutoScrolling = false;
+            clearTimeout(resumeAutoScrollTimeout);
+            pointerStartX = event.touches[0].clientX;
+            trackStartScrollLeft = track.scrollLeft;
+            track.classList.add('dragging');
+        }
+
+        function moveTouchDrag(event) {
+            if (!isDraggingTrack || !usingTouchFallback || !event.touches || event.touches.length !== 1) return;
+            const deltaX = event.touches[0].clientX - pointerStartX;
+            if (Math.abs(deltaX) > dragThresholdPx) {
+                dragMoved = true;
+                event.preventDefault();
+            }
+            track.scrollLeft = trackStartScrollLeft - deltaX;
+            normalizeLoopScroll();
+        }
+
+        function endTouchDrag() {
+            if (!isDraggingTrack || !usingTouchFallback) return;
+            isDraggingTrack = false;
+            usingTouchFallback = false;
+            track.classList.remove('dragging');
             if (!dragMoved) {
                 const pressedScreen = pointerDownTarget && pointerDownTarget.closest
                     ? pointerDownTarget.closest('.project-screen')
@@ -578,6 +623,10 @@
         track.addEventListener('pointermove', moveDrag);
         track.addEventListener('pointerup', endDrag);
         track.addEventListener('pointercancel', endDrag);
+        track.addEventListener('touchstart', startTouchDrag, { passive: true });
+        track.addEventListener('touchmove', moveTouchDrag, { passive: false });
+        track.addEventListener('touchend', endTouchDrag, { passive: true });
+        track.addEventListener('touchcancel', endTouchDrag, { passive: true });
 
         track.addEventListener('click', (event) => {
             if (suppressNextTrackClick) {
