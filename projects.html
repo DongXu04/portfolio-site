@@ -363,7 +363,7 @@
 
         function updatePointerModeUI() {
             const isCoarsePointer = coarsePointerQuery.matches;
-            dragThresholdPx = isCoarsePointer ? 4 : 10;
+            dragThresholdPx = isCoarsePointer ? 2 : 8;
             if (conveyorInstructionText) {
                 conveyorInstructionText.textContent = isCoarsePointer
                     ? '<< SWIPE OR DRAG TO INSPECT CRATES >>'
@@ -472,6 +472,7 @@
         function startTouchDrag(event) {
             if (!event.touches || event.touches.length !== 1) return;
             if (event.target.closest('.btn-deploy, .close-btn')) return;
+            event.preventDefault();
             usingTouchFallback = true;
             isDraggingTrack = true;
             dragMoved = false;
@@ -536,11 +537,12 @@
         function configureCloneForModal(element) {
             if (!element) return null;
             const clone = element.cloneNode(true);
+            const isCoarsePointer = coarsePointerQuery.matches;
             clone.className = '';
             clone.style.width = 'auto';
             clone.style.height = 'auto';
             clone.style.maxWidth = '100%';
-            clone.style.maxHeight = '70vh';
+            clone.style.maxHeight = isCoarsePointer ? '52vh' : '70vh';
             clone.style.objectFit = 'contain';
             clone.style.borderRadius = '4px';
             clone.style.display = 'none';
@@ -624,7 +626,7 @@
         track.addEventListener('pointermove', moveDrag);
         track.addEventListener('pointerup', endDrag);
         track.addEventListener('pointercancel', endDrag);
-        track.addEventListener('touchstart', startTouchDrag, { passive: true });
+        track.addEventListener('touchstart', startTouchDrag, { passive: false });
         track.addEventListener('touchmove', moveTouchDrag, { passive: false });
         track.addEventListener('touchend', endTouchDrag, { passive: true });
         track.addEventListener('touchcancel', endTouchDrag, { passive: true });

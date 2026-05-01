@@ -1639,6 +1639,11 @@ button:focus-visible,
     justify-content: space-between;
     margin-bottom: 15px;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 12;
+    background: rgba(15, 23, 42, 0.98);
+    padding: 6px 0;
 }
 
 .media-controls {
@@ -2029,7 +2034,7 @@ html {
     }
 
     .media-content-container {
-        max-height: min(58svh, 62vh);
+        max-height: min(52svh, 56vh);
     }
 
     /* --- Footer --- */
@@ -2152,7 +2157,7 @@ html {
     }
 
     .media-content-container {
-        max-height: min(54svh, 58vh);
+        max-height: min(48svh, 52vh);
     }
 }
 
