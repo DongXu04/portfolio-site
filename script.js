@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const phoneNumber = "+65 8370 7662"; // ← CHANGE THIS
 
+    if (!phoneBtn || !copyMsg) {
+        return;
+    }
+
     phoneBtn.addEventListener("click", async () => {
         try {
             await navigator.clipboard.writeText(phoneNumber);

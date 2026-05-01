@@ -78,6 +78,23 @@ body {
     opacity: 1;
 }
 
+a:focus-visible,
+button:focus-visible,
+.project-screen:focus-visible {
+    outline: 2px solid #2dd4bf;
+    outline-offset: 2px;
+}
+
+.nav-item.active {
+    width: 120px;
+    padding-right: 18px;
+    background: rgba(184, 134, 11, 0.35);
+}
+
+.nav-item.active .nav-label {
+    opacity: 1;
+}
+
 /* ---------------- Hero Section ---------------- */
 .hero {
     text-align: center;
@@ -114,6 +131,10 @@ body {
 .hero p {
     font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     /* scales between 0.9rem and 1.1rem */
+}
+
+.hero-cta {
+    margin-top: 24px;
 }
 
 /* ---------------- Resume/PDF Buttons ---------------- */
@@ -702,6 +723,10 @@ body {
     transform: translateY(0);
 }
 
+.spacer-60 {
+    height: 60px;
+}
+
 /* ---------------- Blueprint Resume Section ---------------- */
 .blueprint-resume-section {
     width: 100%;
@@ -1006,6 +1031,12 @@ body {
     color: #94a3b8;
 }
 
+.widget-meta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
 .widget-status {
     color: #2dd4bf;
     font-weight: bold;
@@ -1088,6 +1119,11 @@ body {
     color: #94a3b8;
     font-size: 0.85rem;
     margin-top: 2px;
+}
+
+.referrer-email {
+    margin-top: 4px;
+    color: #3b82f6;
 }
 
 @media (max-width: 900px) {
@@ -1272,10 +1308,16 @@ body {
     /* Hide scrollbar */
     -ms-overflow-style: none;
     scrollbar-width: none;
+    cursor: grab;
+    touch-action: pan-y;
 }
 
 .carousel-track::-webkit-scrollbar {
     display: none;
+}
+
+.carousel-track.dragging {
+    cursor: grabbing;
 }
 
 .carousel-spacer {
@@ -1535,37 +1577,6 @@ body {
     }
 }
 
-/* ---------------- Conveyor Scroll Controls ---------------- */
-.scroll-controls {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 10;
-}
-
-.scroll-btn {
-    background: transparent;
-    border: none;
-    color: #38bdf8;
-    font-family: monospace;
-    font-size: 1.2rem;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 10px 20px;
-    transition: all 0.2s;
-    text-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-.scroll-btn:hover {
-    color: #facc15;
-    text-shadow: 0 0 10px rgba(250, 204, 21, 0.8);
-    transform: scale(1.1);
-}
-
 /* ---------------- Project Modal Popup ---------------- */
 .modal-overlay {
     position: fixed;
@@ -1604,6 +1615,59 @@ body {
 
 .modal-overlay.active .modal-box {
     transform: translateY(0);
+}
+
+.modal-title {
+    color: #facc15;
+    font-family: monospace;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+}
+
+.modal-body {
+    color: #cbd5e1;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+.media-modal-box {
+    background: rgba(15, 23, 42, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90vw;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.media-modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.media-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.media-toggle-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+}
+
+.media-content-container {
+    width: 100%;
+    max-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .close-btn {
@@ -1665,6 +1729,12 @@ html {
     }
 
     .nav-item:hover {
+        width: auto;
+        padding: 8px 24px;
+        background: rgba(184, 134, 11, 0.3);
+    }
+
+    .nav-item.active {
         width: auto;
         padding: 8px 24px;
         background: rgba(184, 134, 11, 0.3);
@@ -1859,5 +1929,19 @@ html {
 
     .nav-item {
         padding: 8px 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

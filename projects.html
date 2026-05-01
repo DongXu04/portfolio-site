@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Dx</title>
+    <title>Projects | Tan Dong Xu</title>
+    <meta name="description" content="Engineering project portfolio by Tan Dong Xu featuring autonomous robotics, IoT systems, embedded prototypes, and AI work.">
+    <meta property="og:title" content="Projects | Tan Dong Xu">
+    <meta property="og:description" content="Browse robotics and mechatronics projects, with media demos and detailed project summaries.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/profile.JPG">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -18,7 +24,7 @@
                 </a>
             </li>
             <li>
-                <a href="projects.html" class="nav-item">
+                <a href="projects.html" class="nav-item active">
                     <img src="icons/projects.png" alt="Projects">
                     <span class="nav-label">Projects</span>
                 </a>
@@ -40,12 +46,6 @@
 
         <div class="conveyor-header">
             <h1 class="hud-title">MY_PROJECTS</h1>
-        </div>
-
-        <!-- Scroll Controls -->
-        <div class="scroll-controls">
-            <button class="scroll-btn" onmousedown="startScroll(-1)" onmouseup="stopScroll(-1)" onmouseleave="stopScroll(-1)" ontouchstart="startScroll(-1)" ontouchend="stopScroll(-1)">[ &lt;&lt; PREV ]</button>
-            <button class="scroll-btn" onmousedown="startScroll(1)" onmouseup="stopScroll(1)" onmouseleave="stopScroll(1)" ontouchstart="startScroll(1)" ontouchend="stopScroll(1)">[ NEXT &gt;&gt; ]</button>
         </div>
 
         <div class="conveyor-container">
@@ -72,8 +72,8 @@
                     <div class="crate-content">
                         <div class="project-screen hover-swap">
                             <div class="screen-glare"></div>
-                            <video src="project_images/amr_operation.mp4" class="primary" autoplay muted loop playsinline></video>
-                            <video src="project_images/amr_manual.mp4" class="secondary" muted loop playsinline></video>
+                            <video src="project_images/amr_operation.mp4" class="primary" muted loop playsinline preload="none"></video>
+                            <video src="project_images/amr_manual.mp4" class="secondary" muted loop playsinline preload="none"></video>
                             <div class="hover-hint">HOVER_FOR_MANUAL_CTL</div>
                         </div>
                         <div class="project-data">
@@ -85,7 +85,7 @@
                                 <span>CAD</span>
                             </div>
                             <p>Designed and built an AMR from scratch featuring SLAM and Nav2 for dynamic obstacle avoidance and path planning.</p>
-                            <a href="#" class="btn-deploy" onclick="openModal('Autonomous Mobile Robot (AMR)', `During my internship, I designed and developed an Autonomous Mobile Robot (AMR) from the ground up, covering mechanical design, electrical integration, and software implementation. I engineered a compact dual-chassis structure to optimize space, stability, and manoeuvrability, while integrating industrial-grade motors, controllers, and sensors including LiDAR. The system was fully wired and powered through a centralized distribution setup, with communication handled via ROS 2. Initial development included manual control through a custom HTML-based joystick interface, allowing real-time testing and validation of the robot’s motion and hardware integration.\n\nBuilding on this foundation, I successfully implemented SLAM and Nav2 for autonomous navigation, enabling the robot to perform mapping, localization, and path planning within its environment. The AMR is now capable of navigating dynamically while avoiding obstacles, marking a transition from a basic AGV prototype to a fully autonomous system. Current development focuses on deploying the robot in a real production floor setting, improving reliability, and refining navigation performance for practical industrial use.`)">INITIATE_VIEW</a>
+                            <a href="#" class="btn-deploy" data-project-id="amr">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
@@ -98,8 +98,8 @@
                     <div class="crate-content">
                         <div class="project-screen hover-swap">
                             <div class="screen-glare"></div>
-                            <video src="project_images/autonomous_hardware.mp4" class="primary" autoplay muted loop playsinline></video>
-                            <video src="project_images/autonomous_sim.mp4" class="secondary" muted loop playsinline></video>
+                            <video src="project_images/autonomous_hardware.mp4" class="primary" muted loop playsinline preload="none"></video>
+                            <video src="project_images/autonomous_sim.mp4" class="secondary" muted loop playsinline preload="none"></video>
                             <div class="hover-hint">HOVER_FOR_SIM_LOGIC</div>
                         </div>
                         <div class="project-data">
@@ -110,7 +110,7 @@
                                 <span>Python</span>
                             </div>
                             <p>Programmed an RC car to drive autonomously around a racetrack using a LiDAR sensor and a gap following algorithm.</p>
-                            <a href="#" class="btn-deploy" onclick="openModal('Autonomous driving project', 'For my final year project, I did a joint project by NYP and SUTD. My objective was to program an RC car to drive autonomously around a racetrack. I will be using pure reactive methods to control the speed and steering. I tested was using a simulation, then on the RC car itself.\n\nThe final system utilizes a LiDAR sensor for environmental perception, and employs a gap following algorithm implemented using a ROS 2 framework. The algorithm continuously identifies for the safest gap in the surroundings and adjusts the steering accordingly.\n\nWhen tested, the RC car was able to navigate smoothly without crashing.')">INITIATE_VIEW</a>
+                            <a href="#" class="btn-deploy" data-project-id="autonomous-driving">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                                 <span>IoT</span>
                             </div>
                             <p>Automated Baccarat using Raspberry Pi and Python, linking hardware with a GUI and Adafruit IoT for real-time stats.</p>
-                            <a href="#" class="btn-deploy" onclick="openModal('Automatic baccarat game', 'In this project, I decided to automate the game Baccarat.\n\nUsing Python and Raspberry Pi, I linked up hardware and GUI, so users can play with the hardware while checking their stats online. Communication between my python program and the Raspberry PI was vital in ensuring synchronization and smooth gameplay. I used Adafruit IOT to store and send data, as well as providing a dashboard for the owner to view ongoing stats.\n\nOverall, users are able to play as long as they want, and their real time stats will update on both the Adafruit dashboard and the GUI when the user logs in.')">INITIATE_VIEW</a>
+                            <a href="#" class="btn-deploy" data-project-id="baccarat">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                                 <span>Design</span>
                             </div>
                             <p>Designed a work holder fixture and gripper fingers in Autodesk Inventor to secure and grip spherical steel balls.</p>
-                            <a href="#" class="btn-deploy" onclick="openModal('Gripper fingers for robot arm', 'Using Autodesk Inventor, I designed a work holder fixture to secure spherical steel balls, as well as gripper fingers to grip them.\n\nOver 6 weeks, I researched, designed, and selected suitable materials for this model. For this project, I was tasked with assessing the right size, material, and usability of the final designs. By the end of this project, I understood the in and outs of Inventor a lot better.')">INITIATE_VIEW</a>
+                            <a href="#" class="btn-deploy" data-project-id="gripper">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
@@ -178,8 +178,8 @@
                                 <span>LabView</span>
                                 <span>Logic</span>
                             </div>
-                            <p>Created a stopwatch with start, stop, reset, and lap functions using NI Labview and complex array handling.</p>
-                            <a href="#" class="btn-deploy" onclick="openModal('Stopwatch using LabView', 'In this project, I created a stopwatch using National Instruments\' (NI) Labview.\n\nThis would have to include a start, stop, and reset button. I also added a lap function for users to track their timing. I was proud that I learnt and applied the use of arrays (such as the indexing, build, and delete).')">INITIATE_VIEW</a>
+                            <p>Created a stopwatch with start, stop, reset, and lap functions using NI LabView and complex array handling.</p>
+                            <a href="#" class="btn-deploy" data-project-id="stopwatch">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
@@ -201,7 +201,7 @@
                                 <span>Hardware</span>
                             </div>
                             <p>Developed an Arduino prototype for faster window cleaning, integrating motors, LEDs, and buzzer logic.</p>
-                            <a href="#" class="btn-deploy" onclick="openModal('Handheld window cleaner', 'I decided to make a prototype that can clean windows faster and easier.\n\nUsing Arduino, I assembled my motors, LEDs, buzzers and wires together and coded my program into the system. When the button is clicked, the motor and buzzer will run for 5s and the led will light up indicating the decide is running. Afterwards, when the motor stops, the led will blink before both buzzer and led shuts off.')">INITIATE_VIEW</a>
+                            <a href="#" class="btn-deploy" data-project-id="window-cleaner">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
@@ -224,7 +224,7 @@
                                 <span>ML</span>
                             </div>
                             <p>Trained a neural network model using Orange software to accurately categorize animal images, including blurry ones.</p>
-                            <a href="#" class="btn-deploy" onclick="openModal('Animal Sorter AI', 'I wanted to create an AI that could sort different animals into their respective categories.\n\nUsing the software Orange, I used neural network model to learn how to sort the different animals and managed to sort them based on the image on the left.\n\nThe AI managed to successfully label each image of the animal correctly, even when tested with blurry images.')">INITIATE_VIEW</a>
+                            <a href="#" class="btn-deploy" data-project-id="animal-sorter">INITIATE_VIEW</a>
                         </div>
                     </div>
                 </div>
@@ -236,32 +236,32 @@
         </div>
         
         <div class="conveyor-instructions">
-            <span>&lt;&lt; USE CONTROLS TO INSPECT CRATES &gt;&gt;</span>
+            <span>&lt;&lt; CLICK/TAP + DRAG TO INSPECT CRATES &gt;&gt;</span>
         </div>
     </section>
 
     <!-- Modal Popup Template -->
-    <div id="project-modal" class="modal-overlay">
+    <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
         <div class="modal-box">
-            <button class="close-btn" onclick="closeModal()">[X] ABORT_VIEW</button>
+            <button id="close-project-modal" class="close-btn" type="button">[X] ABORT_VIEW</button>
             <div class="modal-content">
-                <h2 id="modal-title" style="color:#facc15; font-family:monospace; margin-bottom:15px; border-bottom:1px solid #334155; padding-bottom:10px;">PROJECT_DETAILS</h2>
-                <p id="modal-body" style="color:#cbd5e1; line-height:1.6; white-space: pre-line;">Detailed schematics and documentation will be displayed here.</p>
+                <h2 id="modal-title" class="modal-title">PROJECT_DETAILS</h2>
+                <p id="modal-body" class="modal-body">Detailed schematics and documentation will be displayed here.</p>
             </div>
         </div>
     </div>
 
     <!-- Media Modal Popup -->
-    <div id="media-modal" class="modal-overlay" onclick="closeMediaModal()">
-        <div class="modal-box" onclick="event.stopPropagation()" style="background: rgba(15, 23, 42, 0.95); display: flex; flex-direction: column; align-items: center; max-width: 90vw; padding: 20px; border-radius: 6px;">
-            <div style="width: 100%; display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center;">
-                <div id="media-controls" style="display: flex; gap: 10px;">
-                    <button id="btn-primary-media" class="btn-deploy" style="padding: 6px 12px; font-size: 0.85rem; cursor: pointer; border:none; box-shadow:none;" onclick="switchMedia('primary')">MAIN_VIEW</button>
-                    <button id="btn-secondary-media" class="btn-deploy" style="padding: 6px 12px; font-size: 0.85rem; cursor: pointer; border:none; box-shadow:none;" onclick="switchMedia('secondary')">ALT_VIEW</button>
+    <div id="media-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Project media viewer">
+        <div class="modal-box media-modal-box">
+            <div class="media-modal-header">
+                <div id="media-controls" class="media-controls">
+                    <button id="btn-primary-media" class="btn-deploy media-toggle-btn" type="button" data-media-type="primary">MAIN_VIEW</button>
+                    <button id="btn-secondary-media" class="btn-deploy media-toggle-btn" type="button" data-media-type="secondary">ALT_VIEW</button>
                 </div>
-                <button class="close-btn" onclick="closeMediaModal()">[X] CLOSE</button>
+                <button id="close-media-modal" class="close-btn" type="button">[X] CLOSE</button>
             </div>
-            <div id="media-content-container" style="width: 100%; max-height: 75vh; display: flex; justify-content: center; align-items: center;">
+            <div id="media-content-container" class="media-content-container">
                 <!-- Media injected here -->
             </div>
         </div>
@@ -271,122 +271,208 @@
     <footer class="minimal-footer">
         <div class="footer-content">
 
-            <a href="#" class="footer-link">Phone</a>
+            <button id="copyPhone" class="phone-btn">
+                Phone
+            </button>
             <span class="divider">|</span>
 
-            <a href="mailto:dongxu1104@gmail.com" class="footer-link">Email</a>
+            <a href="mailto:dongxu1104@gmail.com" target="_blank" class="footer-link">Email</a>
             <span class="divider">|</span>
 
-            <a href="https://www.linkedin.com/" target="_blank" class="footer-link">
+            <a href="https://www.linkedin.com/in/dongxu-tan-876903261/" target="_blank" class="footer-link">
                 LinkedIn
             </a>
 
             <span class="copyright">© 2026 Tan Dong Xu</span>
         </div>
+        <span id="copyMsg" class="copy-msg">Copied!</span>
     </footer>
 
     <!-- Conveyor and Modal Logic -->
     <script>
-        let scrollInterval;
-        let holdTimeout;
-        let isMouseDown = false;
         let isAutoScrolling = true;
-        let animationFrameId;
+        let lastFocusedElement = null;
+        let isDraggingTrack = false;
+        let pointerStartX = 0;
+        let trackStartScrollLeft = 0;
+        let dragMoved = false;
+        let resumeAutoScrollTimeout;
+        let isPageVisible = !document.hidden;
+        let videoUpdateQueued = false;
+        let pointerDownTarget = null;
+        let suppressNextTrackClick = false;
+        const DRAG_THRESHOLD_PX = 12;
+        const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
         const track = document.querySelector('.carousel-track');
-        
+        const projectModal = document.getElementById('project-modal');
+        const mediaModal = document.getElementById('media-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const closeProjectModalBtn = document.getElementById('close-project-modal');
+        const closeMediaModalBtn = document.getElementById('close-media-modal');
+        const mediaContainer = document.getElementById('media-content-container');
+        const primaryMediaBtn = document.getElementById('btn-primary-media');
+        const secondaryMediaBtn = document.getElementById('btn-secondary-media');
+        const projectScreens = document.querySelectorAll('.project-screen');
+
+        const projectDetails = {
+            "amr": {
+                title: "Autonomous Mobile Robot (AMR)",
+                body: `During my internship, I designed and developed an Autonomous Mobile Robot (AMR) from the ground up, covering mechanical design, electrical integration, and software implementation. I engineered a compact dual-chassis structure to optimize space, stability, and manoeuvrability, while integrating industrial-grade motors, controllers, and sensors including LiDAR. The system was fully wired and powered through a centralized distribution setup, with communication handled via ROS 2. Initial development included manual control through a custom HTML-based joystick interface, allowing real-time testing and validation of the robot’s motion and hardware integration.\n\nBuilding on this foundation, I successfully implemented SLAM and Nav2 for autonomous navigation, enabling the robot to perform mapping, localization, and path planning within its environment. The AMR is now capable of navigating dynamically while avoiding obstacles, marking a transition from a basic AGV prototype to a fully autonomous system. Current development focuses on deploying the robot in a real production floor setting, improving reliability, and refining navigation performance for practical industrial use.`
+            },
+            "autonomous-driving": {
+                title: "Autonomous driving project",
+                body: "For my final year project, I worked on a joint project by NYP and SUTD. My objective was to program an RC car to drive autonomously around a racetrack. I used purely reactive methods to control speed and steering. I first tested the system in simulation, then deployed it on the RC car itself.\n\nThe final system uses a LiDAR sensor for environmental perception and a gap-following algorithm implemented in ROS 2. The algorithm continuously identifies the safest gap in the surroundings and adjusts steering accordingly.\n\nDuring testing, the RC car was able to navigate smoothly without crashing."
+            },
+            "baccarat": {
+                title: "Automatic baccarat game",
+                body: "In this project, I automated the game of Baccarat.\n\nUsing Python and Raspberry Pi, I connected the hardware and GUI so users could play physically while checking their stats online. Communication between my Python program and the Raspberry Pi was vital to ensure synchronization and smooth gameplay. I used Adafruit IoT to store and send data, and to provide a dashboard for the owner to monitor ongoing stats.\n\nOverall, users can play as long as they want, and their real-time stats update on both the Adafruit dashboard and the GUI when they log in."
+            },
+            "gripper": {
+                title: "Gripper fingers for robot arm",
+                body: "Using Autodesk Inventor, I designed a work holder fixture to secure spherical steel balls, along with custom gripper fingers to grip them.\n\nOver 6 weeks, I researched, designed, and selected suitable materials for the model. I was tasked with evaluating the correct size, material, and usability of the final designs. By the end of the project, I had a much stronger understanding of Inventor."
+            },
+            "stopwatch": {
+                title: "Stopwatch using LabView",
+                body: "In this project, I created a stopwatch using National Instruments (NI) LabView.\n\nIt includes start, stop, and reset buttons. I also added a lap function so users can track split times. I was proud to learn and apply array operations such as indexing, build, and delete."
+            },
+            "window-cleaner": {
+                title: "Handheld window cleaner",
+                body: "I built a prototype designed to clean windows faster and more easily.\n\nUsing Arduino, I assembled the motors, LEDs, buzzers, and wiring, then programmed the system logic. When the button is pressed, the motor and buzzer run for 5 seconds and the LED lights up to indicate the device is operating. After the motor stops, the LED blinks before both the buzzer and LED turn off."
+            },
+            "animal-sorter": {
+                title: "Animal Sorter AI",
+                body: "I wanted to create an AI model that could sort different animals into their respective categories.\n\nUsing Orange software, I trained a neural network model to classify different animals from images.\n\nThe model successfully labeled the animal images correctly, even when tested with blurry images."
+            }
+        };
+
         // Clone crates for seamless loop (optional if you have many, but 7 is fine to double)
         const projectCrates = Array.from(track.querySelectorAll('.project-crate'));
-        projectCrates.forEach(crate => {
+        projectCrates.forEach((crate) => {
             const clone = crate.cloneNode(true);
             track.appendChild(clone);
         });
 
         // Remove spacers for a consistent stream
-        track.querySelectorAll('.carousel-spacer').forEach(s => s.remove());
+        track.querySelectorAll('.carousel-spacer').forEach((spacer) => spacer.remove());
 
         function step() {
-            if (isAutoScrolling) {
-                track.scrollLeft += 1; // 1px prevents subpixel jitter on phones
-                
+            if (isAutoScrolling && isPageVisible && !motionQuery.matches) {
+                track.scrollLeft += 1;
                 if (track.scrollLeft >= (track.scrollWidth / 2)) {
                     track.scrollLeft -= Math.floor(track.scrollWidth / 2);
                 }
             }
-            animationFrameId = requestAnimationFrame(step);
+            requestAnimationFrame(step);
         }
-
-        // Initialize auto scroll
         requestAnimationFrame(step);
 
-        // Interaction Pausing
-        track.addEventListener('mouseenter', () => {
-            isAutoScrolling = false;
-        });
-
-        track.addEventListener('mouseleave', () => {
-            if (!isMouseDown) {
-                isAutoScrolling = true;
-            }
-        });
-
-        function startScroll(direction) {
-            isMouseDown = true;
-            isAutoScrolling = false;
-            
-            // Re-enable manual snap if needed, or just scroll
-            holdTimeout = setTimeout(() => {
-                if (!isMouseDown) return;
-                scrollInterval = setInterval(() => {
-                    track.scrollLeft += direction * 10;
-                }, 16);
-            }, 200);
+        function queueVisibleVideoUpdate() {
+            if (videoUpdateQueued) return;
+            videoUpdateQueued = true;
+            requestAnimationFrame(() => {
+                videoUpdateQueued = false;
+                const shouldPlayInTrack = isPageVisible && !mediaModal.classList.contains('active');
+                track.querySelectorAll('.project-screen video.primary').forEach((video) => {
+                    const rect = video.getBoundingClientRect();
+                    const isNearViewport = rect.right > -120 && rect.left < (window.innerWidth + 120);
+                    if (shouldPlayInTrack && isNearViewport) {
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+            });
         }
 
-        function stopScroll(direction) {
-            if (!isMouseDown) return;
-            isMouseDown = false;
-            clearTimeout(holdTimeout);
-            clearInterval(scrollInterval);
-            
-            // Snap logic removed for fully fluid conveyor. Use small push instead.
-            if (!isAutoScrolling) {
-                 track.scrollBy({ left: direction * 350, behavior: 'smooth' });
+        function normalizeLoopScroll() {
+            const halfWidth = track.scrollWidth / 2;
+            if (track.scrollLeft >= halfWidth) {
+                track.scrollLeft -= Math.floor(halfWidth);
+            } else if (track.scrollLeft < 0) {
+                track.scrollLeft += Math.floor(halfWidth);
             }
+        }
 
-            // Resume auto scroll after a short delay
-            setTimeout(() => {
-                if (!isMouseDown) {
+        function scheduleAutoScrollResume(delayMs = 1200) {
+            clearTimeout(resumeAutoScrollTimeout);
+            resumeAutoScrollTimeout = setTimeout(() => {
+                if (!isDraggingTrack) {
                     isAutoScrolling = true;
+                    track.classList.remove('dragging');
                 }
-            }, 1000);
+            }, delayMs);
+        }
+
+        function startDrag(event) {
+            if (event.button !== undefined && event.button !== 0) return;
+            if (event.target.closest('.btn-deploy, .close-btn')) return;
+            isDraggingTrack = true;
+            dragMoved = false;
+            pointerDownTarget = event.target;
+            isAutoScrolling = false;
+            clearTimeout(resumeAutoScrollTimeout);
+            pointerStartX = event.clientX;
+            trackStartScrollLeft = track.scrollLeft;
+            track.classList.add('dragging');
+            track.setPointerCapture(event.pointerId);
+        }
+
+        function moveDrag(event) {
+            if (!isDraggingTrack) return;
+            const deltaX = event.clientX - pointerStartX;
+            if (Math.abs(deltaX) > DRAG_THRESHOLD_PX) {
+                dragMoved = true;
+            }
+            track.scrollLeft = trackStartScrollLeft - deltaX;
+            normalizeLoopScroll();
+        }
+
+        function endDrag(event) {
+            if (!isDraggingTrack) return;
+            isDraggingTrack = false;
+            track.classList.remove('dragging');
+            if (event.pointerId !== undefined && track.hasPointerCapture(event.pointerId)) {
+                track.releasePointerCapture(event.pointerId);
+            }
+            if (!dragMoved) {
+                const pressedScreen = pointerDownTarget && pointerDownTarget.closest
+                    ? pointerDownTarget.closest('.project-screen')
+                    : null;
+                if (pressedScreen) {
+                    suppressNextTrackClick = true;
+                    openMediaModalFromScreen(pressedScreen);
+                }
+            }
+            pointerDownTarget = null;
+            scheduleAutoScrollResume();
         }
 
         function openModal(titleText, bodyText) {
-            document.getElementById('modal-title').innerText = titleText + " SCHEMATICS";
-            document.getElementById('modal-body').innerText = bodyText;
-            document.getElementById('project-modal').classList.add('active');
+            lastFocusedElement = document.activeElement;
+            modalTitle.innerText = titleText + " SCHEMATICS";
+            modalBody.innerText = bodyText;
+            projectModal.classList.add('active');
+            projectModal.setAttribute('aria-hidden', 'false');
+            closeProjectModalBtn.focus();
         }
 
         function closeModal() {
-            document.getElementById('project-modal').classList.remove('active');
+            projectModal.classList.remove('active');
+            projectModal.setAttribute('aria-hidden', 'true');
+            if (lastFocusedElement) {
+                lastFocusedElement.focus();
+            }
         }
 
-        // Media Modal logic (supports cloned crates too via event delegation)
         let currentModalPrimary = null;
         let currentModalSecondary = null;
-
-        track.addEventListener('click', (e) => {
-            const screen = e.target.closest('.project-screen');
-            if (screen) {
-                openMediaModalFromScreen(screen);
-            }
-        });
 
         function configureCloneForModal(element) {
             if (!element) return null;
             const clone = element.cloneNode(true);
-            clone.className = ''; 
+            clone.className = '';
             clone.style.width = 'auto';
             clone.style.height = 'auto';
             clone.style.maxWidth = '100%';
@@ -394,38 +480,29 @@
             clone.style.objectFit = 'contain';
             clone.style.borderRadius = '4px';
             clone.style.display = 'none';
-
             if (clone.tagName === 'VIDEO') {
                 clone.controls = true;
-                clone.muted = false; // Allow sound
+                clone.muted = false;
             }
             return clone;
         }
 
         function openMediaModalFromScreen(screen) {
-            const container = document.getElementById('media-content-container');
-            container.innerHTML = '';
-            
+            lastFocusedElement = document.activeElement;
+            mediaContainer.innerHTML = '';
             const primary = screen.querySelector('.primary');
             const secondary = screen.querySelector('.secondary');
-            
             currentModalPrimary = configureCloneForModal(primary);
             currentModalSecondary = configureCloneForModal(secondary);
-
-            if (currentModalPrimary) container.appendChild(currentModalPrimary);
-            if (currentModalSecondary) container.appendChild(currentModalSecondary);
-
-            document.getElementById('media-modal').classList.add('active');
+            if (currentModalPrimary) mediaContainer.appendChild(currentModalPrimary);
+            if (currentModalSecondary) mediaContainer.appendChild(currentModalSecondary);
+            mediaModal.classList.add('active');
+            mediaModal.setAttribute('aria-hidden', 'false');
             isAutoScrolling = false;
-
-            const secBtn = document.getElementById('btn-secondary-media');
-            if (currentModalSecondary) {
-                secBtn.style.display = 'inline-block';
-            } else {
-                secBtn.style.display = 'none';
-            }
-            
+            queueVisibleVideoUpdate();
+            secondaryMediaBtn.style.display = currentModalSecondary ? 'inline-block' : 'none';
             switchMedia('primary');
+            closeMediaModalBtn.focus();
         }
 
         function switchMedia(type) {
@@ -438,45 +515,145 @@
                 if (currentModalSecondary.tagName === 'VIDEO') currentModalSecondary.pause();
             }
 
-            const priBtn = document.getElementById('btn-primary-media');
-            const secBtn = document.getElementById('btn-secondary-media');
-
-            priBtn.style.background = '#334155';
-            priBtn.style.color = '#facc15';
-            secBtn.style.background = '#334155';
-            secBtn.style.color = '#facc15';
+            primaryMediaBtn.style.background = '#334155';
+            primaryMediaBtn.style.color = '#facc15';
+            secondaryMediaBtn.style.background = '#334155';
+            secondaryMediaBtn.style.color = '#facc15';
 
             if (type === 'primary' && currentModalPrimary) {
                 currentModalPrimary.style.display = 'block';
-                if (currentModalPrimary.tagName === 'VIDEO') currentModalPrimary.play().catch(e => e);
-                priBtn.style.background = '#facc15';
-                priBtn.style.color = '#000';
+                if (currentModalPrimary.tagName === 'VIDEO') currentModalPrimary.play().catch(() => {});
+                primaryMediaBtn.style.background = '#facc15';
+                primaryMediaBtn.style.color = '#000';
             } else if (type === 'secondary' && currentModalSecondary) {
                 currentModalSecondary.style.display = 'block';
-                if (currentModalSecondary.tagName === 'VIDEO') currentModalSecondary.play().catch(e => e);
-                secBtn.style.background = '#facc15';
-                secBtn.style.color = '#000';
+                if (currentModalSecondary.tagName === 'VIDEO') currentModalSecondary.play().catch(() => {});
+                secondaryMediaBtn.style.background = '#facc15';
+                secondaryMediaBtn.style.color = '#000';
             }
         }
 
         function closeMediaModal() {
-            document.getElementById('media-modal').classList.remove('active');
-            document.getElementById('media-content-container').innerHTML = ''; // automatically pauses/destroys videos
+            mediaModal.classList.remove('active');
+            mediaModal.setAttribute('aria-hidden', 'true');
+            mediaContainer.innerHTML = '';
             isAutoScrolling = true;
+            queueVisibleVideoUpdate();
+            if (lastFocusedElement) {
+                lastFocusedElement.focus();
+            }
         }
 
-        // Attach modal to buttons for the first crate (since it's manual)
-        const firstCrateBtn = document.querySelector('.project-crate:first-of-type .btn-deploy');
-        const firstCrateTitle = document.querySelector('.project-crate:first-of-type h3');
-        const firstCratePara = document.querySelector('.project-crate:first-of-type p');
+        track.addEventListener('mouseenter', () => {
+            isAutoScrolling = false;
+        });
 
-        if(firstCrateBtn) {
-            firstCrateBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal(firstCrateTitle.innerText, firstCratePara.innerText);
+        track.addEventListener('mouseleave', () => {
+            if (!isDraggingTrack) {
+                isAutoScrolling = true;
+            }
+        });
+        track.addEventListener('scroll', queueVisibleVideoUpdate, { passive: true });
+        window.addEventListener('resize', queueVisibleVideoUpdate, { passive: true });
+
+        track.addEventListener('pointerdown', startDrag);
+        track.addEventListener('pointermove', moveDrag);
+        track.addEventListener('pointerup', endDrag);
+        track.addEventListener('pointercancel', endDrag);
+
+        track.addEventListener('click', (event) => {
+            if (suppressNextTrackClick) {
+                suppressNextTrackClick = false;
+                event.preventDefault();
+                event.stopPropagation();
+                return;
+            }
+            const detailButton = event.target.closest('.btn-deploy[data-project-id]');
+            if (detailButton) {
+                event.preventDefault();
+                dragMoved = false;
+                const detail = projectDetails[detailButton.dataset.projectId];
+                if (!detail) return;
+                openModal(detail.title, detail.body);
+                return;
+            }
+            if (dragMoved) {
+                event.preventDefault();
+                event.stopPropagation();
+                dragMoved = false;
+                return;
+            }
+            const screen = event.target.closest('.project-screen');
+            if (screen) {
+                openMediaModalFromScreen(screen);
+            }
+        });
+
+        projectScreens.forEach((screen) => {
+            screen.tabIndex = 0;
+            screen.setAttribute('role', 'button');
+            screen.setAttribute('aria-label', 'Open project media viewer');
+            screen.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openMediaModalFromScreen(screen);
+                }
             });
-        }
+        });
 
+        closeProjectModalBtn.addEventListener('click', closeModal);
+        closeMediaModalBtn.addEventListener('click', closeMediaModal);
+        projectModal.addEventListener('click', (event) => {
+            if (event.target === projectModal) {
+                closeModal();
+            }
+        });
+        mediaModal.addEventListener('click', (event) => {
+            if (event.target === mediaModal) {
+                closeMediaModal();
+            }
+        });
+        document.querySelectorAll('[data-media-type]').forEach((button) => {
+            button.addEventListener('click', () => switchMedia(button.dataset.mediaType));
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') return;
+            if (mediaModal.classList.contains('active')) {
+                closeMediaModal();
+            } else if (projectModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('visibilitychange', () => {
+            isPageVisible = !document.hidden;
+            if (!isPageVisible) {
+                track.querySelectorAll('.project-screen video.primary').forEach((video) => video.pause());
+                if (currentModalPrimary && currentModalPrimary.tagName === 'VIDEO') currentModalPrimary.pause();
+                if (currentModalSecondary && currentModalSecondary.tagName === 'VIDEO') currentModalSecondary.pause();
+            } else {
+                queueVisibleVideoUpdate();
+                if (mediaModal.classList.contains('active')) {
+                    switchMedia('primary');
+                }
+            }
+        });
+
+        const handleMotionPreferenceChange = () => {
+            if (motionQuery.matches) {
+                isAutoScrolling = false;
+            } else if (!isDraggingTrack && !mediaModal.classList.contains('active')) {
+                isAutoScrolling = true;
+            }
+        };
+        if (typeof motionQuery.addEventListener === 'function') {
+            motionQuery.addEventListener('change', handleMotionPreferenceChange);
+        } else if (typeof motionQuery.addListener === 'function') {
+            motionQuery.addListener(handleMotionPreferenceChange);
+        }
+        handleMotionPreferenceChange();
+        queueVisibleVideoUpdate();
     </script>
 </body>
 </html>

@@ -4,8 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume | Dx</title>
+    <title>Resume | Tan Dong Xu</title>
+    <meta name="description" content="Resume, work history, education, and professional referrals for Tan Dong Xu, a Robotics and Mechatronics engineer.">
+    <meta property="og:title" content="Resume | Tan Dong Xu">
+    <meta property="og:description" content="View work experience, education timeline, and verified professional referrals.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/profile.JPG">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -26,7 +32,7 @@
                 </a>
             </li>
             <li>
-                <a href="resume.html" class="nav-item">
+                <a href="resume.html" class="nav-item active">
                     <img src="icons/resume.png" alt="Resume">
                     <span class="nav-label">Resume</span>
                 </a>
@@ -37,8 +43,8 @@
     <!-- Hero -->
     <section class="hero">
         <h1>Resume & Referrals</h1>
-        <p>The specs behind the Engineer.</p>
-        <div style="margin-top: 24px;">
+        <p>The specs behind the engineer.</p>
+        <div class="hero-cta">
             <a href="documents/Resume.pdf" target="_blank" class="download-btn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -205,7 +211,7 @@
                 </div>
             </div> <!-- End Work Timeline -->
 
-            <div style="height: 60px;"></div> <!-- Spacer -->
+            <div class="spacer-60"></div> <!-- Spacer -->
 
             <!-- ====== EDUCATION HISTORY ====== -->
             <h2 class="timeline-title">EDUCATION HISTORY</h2>
@@ -279,7 +285,7 @@
                 <div class="referral-widget">
                     <div class="widget-topbar">
                         <span class="widget-id">ID: REC-001</span>
-                        <div style="display: flex; gap: 15px; align-items: center;">
+                        <div class="widget-meta">
                             <a href="documents/FYP_Referral_ThomasWong.pdf" target="_blank" class="doc-link">View
                                 Original Letter</a>
                             <span class="widget-status">VERIFIED</span>
@@ -318,7 +324,7 @@
                             <div class="referrer-info">
                                 <strong>Thomas Wong</strong>
                                 <span>Senior Development Engineer, Intelligent Robot Group, Nanyang Polytechnic</span>
-                                <span style="margin-top: 4px; color: #3b82f6;">thomas_wong@nyp.edu.sg</span>
+                                <span class="referrer-email">thomas_wong@nyp.edu.sg</span>
                             </div>
                         </div>
                     </div>
@@ -328,7 +334,7 @@
                 <div class="referral-widget">
                     <div class="widget-topbar">
                         <span class="widget-id">ID: REC-002</span>
-                        <div style="display: flex; gap: 15px; align-items: center;">
+                        <div class="widget-meta">
                             <a href="documents/ITP_Referral_LeeKC.pdf" target="_blank" class="doc-link">View Original
                                 Letter</a>
                             <span class="widget-status">VERIFIED</span>
@@ -367,7 +373,7 @@
                             <div class="referrer-info">
                                 <strong>Lee Kim Cheng</strong>
                                 <span>Lecturer | School of Engineering, Nanyang Polytechnic</span>
-                                <span style="margin-top: 4px; color: #3b82f6;">lee_kim_cheng@nyp.edu.sg</span>
+                                <span class="referrer-email">lee_kim_cheng@nyp.edu.sg</span>
                             </div>
                         </div>
                     </div>
@@ -380,18 +386,21 @@
     <footer class="minimal-footer">
         <div class="footer-content">
 
-            <a href="#" class="footer-link">Phone</a>
+            <button id="copyPhone" class="phone-btn">
+                Phone
+            </button>
             <span class="divider">|</span>
 
-            <a href="mailto:dongxu1104@gmail.com" class="footer-link">Email</a>
+            <a href="mailto:dongxu1104@gmail.com" target="_blank" class="footer-link">Email</a>
             <span class="divider">|</span>
 
-            <a href="https://www.linkedin.com/" target="_blank" class="footer-link">
+            <a href="https://www.linkedin.com/in/dongxu-tan-876903261/" target="_blank" class="footer-link">
                 LinkedIn
             </a>
 
             <span class="copyright">© 2026 Tan Dong Xu</span>
         </div>
+        <span id="copyMsg" class="copy-msg">Copied!</span>
     </footer>
 
 </body>
