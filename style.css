@@ -1930,8 +1930,8 @@ html {
     .carousel-track {
         gap: 16px;
         padding-inline: 14px;
-        scroll-snap-type: x mandatory;
-        touch-action: none;
+        scroll-snap-type: x proximity;
+        touch-action: pan-x;
     }
 
     .carousel-spacer {

@@ -305,6 +305,10 @@
         let dragThresholdPx = 12;
         let touchStartScrollLeft = 0;
         let touchSwipeDetected = false;
+        let pointerVelocityX = 0;
+        let lastPointerX = 0;
+        let lastPointerTime = 0;
+        let inertiaFrameId = null;
         const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
         const coarsePointerQuery = window.matchMedia('(hover: none) and (pointer: coarse)');
 
@@ -365,7 +369,7 @@
 
         function updatePointerModeUI() {
             const isCoarsePointer = coarsePointerQuery.matches;
-            dragThresholdPx = isCoarsePointer ? 6 : 8;
+            dragThresholdPx = isCoarsePointer ? 2 : 3;
             if (conveyorInstructionText) {
                 conveyorInstructionText.textContent = isCoarsePointer
                     ? '<< SWIPE OR DRAG TO INSPECT CRATES >>'
@@ -376,6 +380,30 @@
                 const tapLabel = hint.dataset.tapLabel || hoverLabel;
                 hint.textContent = isCoarsePointer ? tapLabel : hoverLabel;
             });
+        }
+
+        function stopInertia() {
+            if (inertiaFrameId) {
+                cancelAnimationFrame(inertiaFrameId);
+                inertiaFrameId = null;
+            }
+        }
+
+        function startInertia(initialVelocityX) {
+            if (motionQuery.matches) return;
+            stopInertia();
+            let velocity = initialVelocityX;
+            const step = () => {
+                if (Math.abs(velocity) < 0.1) {
+                    inertiaFrameId = null;
+                    return;
+                }
+                track.scrollLeft -= velocity * 14;
+                normalizeLoopScroll();
+                velocity *= 0.93;
+                inertiaFrameId = requestAnimationFrame(step);
+            };
+            inertiaFrameId = requestAnimationFrame(step);
         }
 
         function step() {
@@ -435,8 +463,12 @@
             pointerDownTarget = event.target;
             isAutoScrolling = false;
             clearTimeout(resumeAutoScrollTimeout);
+            stopInertia();
             pointerStartX = event.clientX;
             trackStartScrollLeft = track.scrollLeft;
+            lastPointerX = event.clientX;
+            lastPointerTime = performance.now();
+            pointerVelocityX = 0;
             track.classList.add('dragging');
             track.setPointerCapture(event.pointerId);
         }
@@ -446,6 +478,14 @@
             const deltaX = event.clientX - pointerStartX;
             if (Math.abs(deltaX) > dragThresholdPx) {
                 dragMoved = true;
+            }
+            const now = performance.now();
+            const dt = now - lastPointerTime;
+            if (dt > 0) {
+                const vx = (event.clientX - lastPointerX) / dt;
+                pointerVelocityX = (pointerVelocityX * 0.65) + (vx * 0.35);
+                lastPointerX = event.clientX;
+                lastPointerTime = now;
             }
             track.scrollLeft = trackStartScrollLeft - deltaX;
             normalizeLoopScroll();
@@ -467,6 +507,9 @@
                     openMediaModalFromScreen(pressedScreen);
                 }
             }
+            if (dragMoved && Math.abs(pointerVelocityX) > 0.05) {
+                startInertia(pointerVelocityX);
+            }
             pointerDownTarget = null;
             scheduleAutoScrollResume();
         }
@@ -481,6 +524,7 @@
             pointerDownTarget = event.target;
             isAutoScrolling = false;
             clearTimeout(resumeAutoScrollTimeout);
+            stopInertia();
             touchStartScrollLeft = track.scrollLeft;
         }
 
@@ -623,7 +667,7 @@
         track.addEventListener('pointermove', moveDrag);
         track.addEventListener('pointerup', endDrag);
         track.addEventListener('pointercancel', endDrag);
-        track.addEventListener('touchstart', startTouchDrag, { passive: false });
+        track.addEventListener('touchstart', startTouchDrag, { passive: true });
         track.addEventListener('touchmove', moveTouchDrag, { passive: false });
         track.addEventListener('touchend', endTouchDrag, { passive: true });
         track.addEventListener('touchcancel', endTouchDrag, { passive: true });
