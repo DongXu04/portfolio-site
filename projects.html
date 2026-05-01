@@ -74,7 +74,7 @@
                             <div class="screen-glare"></div>
                             <video src="project_images/amr_operation.mp4" class="primary" muted loop playsinline preload="none"></video>
                             <video src="project_images/amr_manual.mp4" class="secondary" muted loop playsinline preload="none"></video>
-                            <div class="hover-hint">HOVER_FOR_MANUAL_CTL</div>
+                            <div class="hover-hint" data-hover-label="HOVER_FOR_MANUAL_CTL" data-tap-label="TAP_FOR_MANUAL_CTL">HOVER_FOR_MANUAL_CTL</div>
                         </div>
                         <div class="project-data">
                             <h3>Autonomous Mobile Robot (AMR)</h3>
@@ -100,7 +100,7 @@
                             <div class="screen-glare"></div>
                             <video src="project_images/autonomous_hardware.mp4" class="primary" muted loop playsinline preload="none"></video>
                             <video src="project_images/autonomous_sim.mp4" class="secondary" muted loop playsinline preload="none"></video>
-                            <div class="hover-hint">HOVER_FOR_SIM_LOGIC</div>
+                            <div class="hover-hint" data-hover-label="HOVER_FOR_SIM_LOGIC" data-tap-label="TAP_FOR_SIM_LOGIC">HOVER_FOR_SIM_LOGIC</div>
                         </div>
                         <div class="project-data">
                             <h3>Autonomous driving project</h3>
@@ -125,7 +125,7 @@
                             <div class="screen-glare"></div>
                             <img src="project_images/baccarat_hardware.jpg" class="primary" alt="Automatic Baccarat Hardware">
                             <img src="project_images/baccarat_gui.png" class="secondary" alt="Automatic Baccarat GUI">
-                            <div class="hover-hint">HOVER_FOR_GUI</div>
+                            <div class="hover-hint" data-hover-label="HOVER_FOR_GUI" data-tap-label="TAP_FOR_GUI">HOVER_FOR_GUI</div>
                         </div>
                         <div class="project-data">
                             <h3>Automatic baccarat game</h3>
@@ -148,7 +148,7 @@
                             <div class="screen-glare"></div>
                             <img src="project_images/gripper_cad.jpg" class="primary" alt="Gripper CAD">
                             <img src="project_images/gripper_logic.jpg" class="secondary" alt="Gripper Technical Drawing">
-                            <div class="hover-hint">HOVER_FOR_SCHEMA</div>
+                            <div class="hover-hint" data-hover-label="HOVER_FOR_SCHEMA" data-tap-label="TAP_FOR_SCHEMA">HOVER_FOR_SCHEMA</div>
                         </div>
                         <div class="project-data">
                             <h3>Gripper fingers for robot arm</h3>
@@ -170,7 +170,7 @@
                             <div class="screen-glare"></div>
                             <img src="project_images/stopwatch_ui.jpg" class="primary" alt="Stopwatch UI">
                             <img src="project_images/stopwatch_logic.jpg" class="secondary" alt="Stopwatch Logic">
-                            <div class="hover-hint">HOVER_FOR_LOGIC</div>
+                            <div class="hover-hint" data-hover-label="HOVER_FOR_LOGIC" data-tap-label="TAP_FOR_LOGIC">HOVER_FOR_LOGIC</div>
                         </div>
                         <div class="project-data">
                             <h3>Stopwatch using LabView</h3>
@@ -192,7 +192,7 @@
                             <div class="screen-glare"></div>
                             <img src="project_images/window_cleaner_hardware.jpg" class="primary" alt="Window Cleaner Hardware">
                             <img src="project_images/window_cleaner_sim.jpg" class="secondary" alt="Window Cleaner Simulation">
-                            <div class="hover-hint">HOVER_FOR_SIM</div>
+                            <div class="hover-hint" data-hover-label="HOVER_FOR_SIM" data-tap-label="TAP_FOR_SIM">HOVER_FOR_SIM</div>
                         </div>
                         <div class="project-data">
                             <h3>Handheld window cleaner</h3>
@@ -214,7 +214,7 @@
                             <div class="screen-glare"></div>
                             <img src="project_images/animal_sorter.jpg" class="primary" alt="Animal Sorter AI">
                             <img src="project_images/animal_sorter_logic.jpg" class="secondary" alt="Animal Sorter Logic">
-                            <div class="hover-hint">HOVER_FOR_TRAINING</div>
+                            <div class="hover-hint" data-hover-label="HOVER_FOR_TRAINING" data-tap-label="TAP_FOR_TRAINING">HOVER_FOR_TRAINING</div>
                         </div>
                         <div class="project-data">
                             <h3>Animal Sorter AI</h3>
@@ -236,7 +236,7 @@
         </div>
         
         <div class="conveyor-instructions">
-            <span>&lt;&lt; CLICK/TAP + DRAG TO INSPECT CRATES &gt;&gt;</span>
+            <span id="conveyorInstructionText">&lt;&lt; CLICK/TAP + DRAG TO INSPECT CRATES &gt;&gt;</span>
         </div>
     </section>
 
@@ -301,8 +301,9 @@
         let videoUpdateQueued = false;
         let pointerDownTarget = null;
         let suppressNextTrackClick = false;
-        const DRAG_THRESHOLD_PX = 12;
+        let dragThresholdPx = 12;
         const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const coarsePointerQuery = window.matchMedia('(hover: none) and (pointer: coarse)');
 
         const track = document.querySelector('.carousel-track');
         const projectModal = document.getElementById('project-modal');
@@ -312,9 +313,11 @@
         const closeProjectModalBtn = document.getElementById('close-project-modal');
         const closeMediaModalBtn = document.getElementById('close-media-modal');
         const mediaContainer = document.getElementById('media-content-container');
+        const conveyorInstructionText = document.getElementById('conveyorInstructionText');
         const primaryMediaBtn = document.getElementById('btn-primary-media');
         const secondaryMediaBtn = document.getElementById('btn-secondary-media');
         const projectScreens = document.querySelectorAll('.project-screen');
+        const hoverHints = document.querySelectorAll('.hover-hint');
 
         const projectDetails = {
             "amr": {
@@ -356,6 +359,21 @@
 
         // Remove spacers for a consistent stream
         track.querySelectorAll('.carousel-spacer').forEach((spacer) => spacer.remove());
+
+        function updatePointerModeUI() {
+            const isCoarsePointer = coarsePointerQuery.matches;
+            dragThresholdPx = isCoarsePointer ? 8 : 12;
+            if (conveyorInstructionText) {
+                conveyorInstructionText.textContent = isCoarsePointer
+                    ? '<< SWIPE OR DRAG TO INSPECT CRATES >>'
+                    : '<< CLICK/TAP + DRAG TO INSPECT CRATES >>';
+            }
+            hoverHints.forEach((hint) => {
+                const hoverLabel = hint.dataset.hoverLabel || hint.textContent;
+                const tapLabel = hint.dataset.tapLabel || hoverLabel;
+                hint.textContent = isCoarsePointer ? tapLabel : hoverLabel;
+            });
+        }
 
         function step() {
             if (isAutoScrolling && isPageVisible && !motionQuery.matches) {
@@ -422,7 +440,7 @@
         function moveDrag(event) {
             if (!isDraggingTrack) return;
             const deltaX = event.clientX - pointerStartX;
-            if (Math.abs(deltaX) > DRAG_THRESHOLD_PX) {
+            if (Math.abs(deltaX) > dragThresholdPx) {
                 dragMoved = true;
             }
             track.scrollLeft = trackStartScrollLeft - deltaX;
@@ -652,7 +670,13 @@
         } else if (typeof motionQuery.addListener === 'function') {
             motionQuery.addListener(handleMotionPreferenceChange);
         }
+        if (typeof coarsePointerQuery.addEventListener === 'function') {
+            coarsePointerQuery.addEventListener('change', updatePointerModeUI);
+        } else if (typeof coarsePointerQuery.addListener === 'function') {
+            coarsePointerQuery.addListener(updatePointerModeUI);
+        }
         handleMotionPreferenceChange();
+        updatePointerModeUI();
         queueVisibleVideoUpdate();
     </script>
 </body>
