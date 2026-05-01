@@ -303,6 +303,8 @@
         let pointerDownTarget = null;
         let suppressNextTrackClick = false;
         let dragThresholdPx = 12;
+        let touchStartScrollLeft = 0;
+        let touchSwipeDetected = false;
         const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
         const coarsePointerQuery = window.matchMedia('(hover: none) and (pointer: coarse)');
 
@@ -363,7 +365,7 @@
 
         function updatePointerModeUI() {
             const isCoarsePointer = coarsePointerQuery.matches;
-            dragThresholdPx = isCoarsePointer ? 2 : 8;
+            dragThresholdPx = isCoarsePointer ? 6 : 8;
             if (conveyorInstructionText) {
                 conveyorInstructionText.textContent = isCoarsePointer
                     ? '<< SWIPE OR DRAG TO INSPECT CRATES >>'
@@ -472,36 +474,29 @@
         function startTouchDrag(event) {
             if (!event.touches || event.touches.length !== 1) return;
             if (event.target.closest('.btn-deploy, .close-btn')) return;
-            event.preventDefault();
             usingTouchFallback = true;
-            isDraggingTrack = true;
+            isDraggingTrack = false;
             dragMoved = false;
+            touchSwipeDetected = false;
             pointerDownTarget = event.target;
             isAutoScrolling = false;
             clearTimeout(resumeAutoScrollTimeout);
-            pointerStartX = event.touches[0].clientX;
-            trackStartScrollLeft = track.scrollLeft;
-            track.classList.add('dragging');
+            touchStartScrollLeft = track.scrollLeft;
         }
 
         function moveTouchDrag(event) {
-            if (!isDraggingTrack || !usingTouchFallback || !event.touches || event.touches.length !== 1) return;
-            const deltaX = event.touches[0].clientX - pointerStartX;
-            const absDeltaX = Math.abs(deltaX);
-            if (absDeltaX > dragThresholdPx) {
+            if (!usingTouchFallback || !event.touches || event.touches.length !== 1) return;
+            const travel = Math.abs(track.scrollLeft - touchStartScrollLeft);
+            if (travel > dragThresholdPx) {
                 dragMoved = true;
+                touchSwipeDetected = true;
             }
-            event.preventDefault();
-            track.scrollLeft = trackStartScrollLeft - deltaX;
-            normalizeLoopScroll();
         }
 
         function endTouchDrag() {
-            if (!isDraggingTrack || !usingTouchFallback) return;
-            isDraggingTrack = false;
+            if (!usingTouchFallback) return;
             usingTouchFallback = false;
-            track.classList.remove('dragging');
-            if (!dragMoved) {
+            if (!touchSwipeDetected) {
                 const pressedScreen = pointerDownTarget && pointerDownTarget.closest
                     ? pointerDownTarget.closest('.project-screen')
                     : null;
@@ -509,9 +504,11 @@
                     suppressNextTrackClick = true;
                     openMediaModalFromScreen(pressedScreen);
                 }
+            } else {
+                suppressNextTrackClick = true;
             }
             pointerDownTarget = null;
-            scheduleAutoScrollResume();
+            scheduleAutoScrollResume(1800);
         }
 
         function openModal(titleText, bodyText) {
